@@ -4,7 +4,16 @@ module.exports = {
   ],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'dark-green' : "#08A4A6",
+        'light-green' : "#E2F6F6",
+      },
+      fontFamily : {
+        'poppins' : ['poppins'],
+        'montserrat' : ['montserrat']
+      }
+    },
   },
   plugins: [
     require('daisyui'),
