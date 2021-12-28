@@ -1,3 +1,4 @@
+import CardArtikel from "./components/cardArtikel";
 import CardPsikolog from "./components/cardPsikolog";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
@@ -8,6 +9,7 @@ function App() {
     <> 
       <Navbar/> 
       <CardPsikolog/>
+      <CardArtikel/>
       <Footer/>
     </>
   );
