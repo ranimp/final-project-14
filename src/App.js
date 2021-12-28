@@ -1,9 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import Footer from "./components/footer";
+import Navbar from "./components/navbar";
+import NavbarLogin from "./components/navbarlogin";
 
 function App() {
   return (
-    <h1 className="text-center font-bold">First Commit</h1>
+    <>  
+      <Footer/>
+    </>
   );
 }
 
