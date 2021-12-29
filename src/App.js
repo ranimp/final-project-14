@@ -1,4 +1,5 @@
 import CardArtikel from "./components/cardArtikel";
+import CardKomWebKat from "./components/cardKomWebKat";
 import CardPsikolog from "./components/cardPsikolog";
 import CardTestimoniPsikolog from "./components/cardTesti";
 import CardTim from "./components/cardTimKami";
@@ -14,6 +15,7 @@ function App() {
       <CardArtikel/>
       <CardTim/>
       <CardTestimoniPsikolog/>
+      <CardKomWebKat />
       <Footer/>
     </>
   );
