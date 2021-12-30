@@ -3,7 +3,7 @@ import Logo from '../icons/logo.png';
 import { Link } from "react-router-dom";
 import Button from './button';
 
-export default function CardPsikolog({img, title, desc}) {
+export default function CardPsikolog({img, title, desc, link}) {
   return (
     <>
       <div className="card text-center">
@@ -13,9 +13,9 @@ export default function CardPsikolog({img, title, desc}) {
         <div className="card-body font-poppins text-xs">
           <h2 className="card-title font-montserrat text-base">{title}</h2> 
           <p className='-mb-3 line-clamp-2'>{desc}</p> 
-          <div className="justify-center card-actions">
+          <Link className="justify-center card-actions" to={link}>
             <Button type='more'>read more</Button>
-          </div>
+          </Link>
         </div>
       </div> 
     </>

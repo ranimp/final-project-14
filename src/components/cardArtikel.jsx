@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-export default function CardArtikel({img, title, desc}) {
+export default function CardArtikel({img, title, desc, link}) {
   return (
     <>
       <div className="card lg:card-side card-bordered bg-light-green border-light-green">
@@ -10,7 +10,7 @@ export default function CardArtikel({img, title, desc}) {
           <h2 className="card-title line-clamp-1 text-base text-dark-green font-montserrat">{title}</h2> 
           <p className='-mb-5 line-clamp-3 text-sm'>{desc}</p> 
           <div className="card-actions justify-end text-orange-500 -mb-2">
-            <button className="btn btn-ghost">read more</button>
+            <Link className="btn btn-ghost" to={link}>read more</Link>
           </div>
         </div>
       </div>
