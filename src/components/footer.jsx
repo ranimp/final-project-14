@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import Logo from '../icons/logo.png';
 import ig from '../icons/ig.svg';
 import { Link } from "react-router-dom";
-import Button from './button';
 
 export default function Footer() {
     return (

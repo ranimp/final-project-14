@@ -2,7 +2,6 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  darkMode: false,
   theme: {
     extend: {
       colors: {
@@ -10,12 +9,16 @@ module.exports = {
         'light-green' : "#E2F6F6",
       },
       fontFamily : {
-        'poppins' : ['poppins'],
-        'montserrat' : ['montserrat']
+        'poppins' : ['Poppins'],
+        'montserrat' : ['Montserrat'],
+      },
+      fontWeight : {
+        'superbold' : 1000,
       }
     },
   },
   plugins: [
     require('daisyui'),
+    require('@tailwindcss/line-clamp')
   ],
 }
