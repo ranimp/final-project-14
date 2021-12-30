@@ -51,6 +51,9 @@ export default function Navbar() {
                       <a href="#">Konsultasi</a>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
+                      <a href="#">Profil Psikolog</a>
+                    </li> 
+                    <li className='hover:bg-light-green -mt-3'>
                       <a href="#">Pendeteksi Masalah</a>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
