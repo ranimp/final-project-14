@@ -27,9 +27,9 @@ export default function DetailPsikologPage() {
         <p className="font-poppins text-sm lg:text-base">Ramah, Profesional, dan non-judgemental </p>
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:mx-12">
           <div className="col-span-1 lg:col-span-2 my-8 lg:my-20 font-poppins" data-aos="fade-right" data-aos-duration="1500">
-            <img className="mx-auto" src={psikolog.gambar} alt="gambar"/>
+            <img className="mx-auto w-80 h-80 object-scale-down" src={psikolog.gambar} alt="gambar"/>
           </div>
-          <div className="lg:col-span-3 lg:mt-20 lg:ml-20" data-aos="fade-left" data-aos-duration="1000">
+          <div className="lg:col-span-3 lg:my-auto lg:ml-20" data-aos="fade-left" data-aos-duration="1000">
             <div className="font-montserrat font-bold text-lg lg:text-2xl text-dark-green">
               {psikolog.name}
             </div>
@@ -39,12 +39,12 @@ export default function DetailPsikologPage() {
             <div className="font-poppins text-xs lg:text-sm">
             {psikolog.deskripsi}
             </div>
-            <div className="my-3">
+            <div className="my-8">
               <Button type='pilihPaket' def='default'>jadwalkan konsultasi</Button>
             </div>
           </div>
         </div>
-        <div className="font-poppins text-sm lg:text-base text-center font-bold mt-5">Testimoni  Konsultasi  Untuk Dr. Amanda Sarena, M.psi</div>
+        <div className="font-poppins text-sm lg:text-base text-center font-bold mt-5">Testimoni  Konsultasi Untuk {psikolog.name}</div>
         <div className='lg:mx-36 grid grid-cols-1 md:grid-cols-2 p-5 shadow-2xl rounded-xl'>
           <CardTestimoniPsikolog />
           <CardTestimoniPsikolog />

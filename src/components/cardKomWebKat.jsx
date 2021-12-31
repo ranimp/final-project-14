@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
-export default function CardKomWebKat({img, title, desc}) {
+export default function CardKomWebKat({img, title, desc, link}) {
   return (
     <>
       <div class="card shadow-2xl justify-center">
-        <img className="object-cover" src="https://picsum.photos/id/1005/400/250" class="rounded-lg"/>
+        <img className="object-cover w-58 h-58 mx-auto" src={img} class="rounded-lg"/>
         <div class="card-body font-poppins -mx-3">
-          <h3 class="card-title font-montserrat text-sm -mt-3 capitalize text-center">nama komunitas</h3>
-          <p className='text-xs -mb-5 line-clamp-5'>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p> 
+          <h3 class="card-title font-montserrat text-sm -mt-3 capitalize text-center line-clamp-2">{title}</h3>
+          <p className='text-xs -mb-5 line-clamp-5'>{desc}</p> 
           <div className="card-actions justify-end text-orange-500 -my-5">
-            <button className="btn btn-ghost">read more</button>
+            <Link className="btn btn-ghost" to={link}>read more</Link>
           </div>
         </div>
       </div> 

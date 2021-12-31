@@ -21,7 +21,7 @@ export default function ArtikelPage() {
       <div className=" pt-8 lg:py-12">
         <div data-aos="fade-up" data-aos-duration="1500">
           <h1 className="text-center font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">artikel menarik untuk kamu</h1>
-          <div className='lg:mx-36 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-5 text-black'>
+          <div className='lg:mx-36 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-5 text-black lg:my-8'>
             {artikel.map((artikel) => (
               <CardArtikel img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
             ))}

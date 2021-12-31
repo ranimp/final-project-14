@@ -8,6 +8,8 @@ import DetailPsikologPage from "./pages/detailPsikolog";
 import PsikologPage from "./pages/psikolog";
 import ArtikelPage from "./pages/artikel";
 import DetailArtikelPage from "./pages/detailArtikel";
+import WebinarPage from "./pages/webinar";
+import DetailWebinarPage from "./pages/detailWebinar";
 AOS.init();
 
 function App() {
@@ -16,10 +18,12 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Switch>
+            <Route exact path="/webinar/:id" component={DetailWebinarPage} />
             <Route exact path="/artikel/:id" component={DetailArtikelPage} />
             <Route exact path="/psikolog/:id" component={DetailPsikologPage} />
             <Route exact path="/konsultasi" component={KonsultasiPage} />
             <Route exact path="/artikel" component={ArtikelPage} />
+            <Route exact path="/webinar" component={WebinarPage} />
             <Route exact path="/psikolog" component={PsikologPage} />
             <Route exact path="/" component={HomePage} />
           </Switch>
