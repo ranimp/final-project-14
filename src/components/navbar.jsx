@@ -29,11 +29,11 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="lg:px-3 py-2 flex items-center text-lg capitalize font-bold leading-snug text-dark-green hover:opacity-75" href='#'      
+                <Link
+                  className="lg:px-3 py-2 flex items-center text-lg capitalize font-bold leading-snug text-dark-green hover:opacity-75" to='/'      
                 >
                   <i className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2">beranda</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item hidden lg:block">
                 <a

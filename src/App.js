@@ -14,6 +14,7 @@ import KategoriPage from "./pages/kategori";
 import DetailKategoriPage from "./pages/detailKategori";
 import KomunitasPage from "./pages/komunitas";
 import DetailKomunitasPage from "./pages/detailKomunitas";
+import DetailTestimoniPage from "./pages/testimoni";
 AOS.init();
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Switch>
+            <Route exact path="/testimoni/:id" component={DetailTestimoniPage} />
+            <Route exact path="/testimoni/" component={DetailTestimoniPage} />
             <Route exact path="/komunitas/:id" component={DetailKomunitasPage} />
             <Route exact path="/kategori/:id" component={DetailKategoriPage} />
             <Route exact path="/webinar/:id" component={DetailWebinarPage} />
