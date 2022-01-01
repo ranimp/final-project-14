@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-export default function CardKomWebKat({img, title, desc, link}) {
+export default function CardKomWeb({img, title, desc, link}) {
   return (
     <>
       <div class="card shadow-2xl justify-center">
