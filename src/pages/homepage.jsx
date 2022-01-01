@@ -40,7 +40,9 @@ export default function HomePage() {
               <h1 className="font-montserrat font-bold text-xl lg:text-5xl text-black lg:mb-2">Konsultasikan</h1>
               <p className="font-montserrat font-bold text-xl lg:text-5xl text-dark-green mb-4 lg:mb-8">Kondisi Mental <span className="text-black">Kamu</span></p>
               <p className="text-sm lg:text-lg font-thin text-black mb-4 lg:mb-8">Kami peduli dengan kesehatan mentalmu, konsultasikan dengan Psikolog terbaik kami untuk belajar dan mencari solusi dari permasalahan kesehatan mental yang kamu alami</p>
-              <Button def='default' type='pilihPaket'>pilih paket konsultasi </Button>
+              <Link to="/konsultasi">
+                <Button def='default' type='pilihPaket'>pilih paket konsultasi </Button>
+              </Link>
             </div>
             <div className="lg:flex lg:items-center lg:col-span-3 mx-auto" data-aos="fade-left" data-aos-duration="1000">
               <img src={jumbotron} alt="homepic" />
@@ -146,7 +148,7 @@ export default function HomePage() {
           <h1 className="text-center font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">profil psikolog</h1>
           <div className='lg:mx-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-black'>
             {psikolog.slice(0, 3).map((psikolog) => (
-              <CardPsikolog img={psikolog.gambar} title={psikolog.name} desc={psikolog.spesialis}/>
+              <CardPsikolog img={psikolog.gambar} title={psikolog.name} desc={psikolog.spesialis} link={`/psikolog/${psikolog._id}`}/>
             ))}
           </div>
         </div>
@@ -157,7 +159,7 @@ export default function HomePage() {
           <h1 className="container mx-auto px-5 font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">artikel menarik untuk kamu</h1>
           <div className='lg:mx-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-5 text-black'>
             {artikel.slice(0, 4).map((artikel) => (
-              <CardArtikel img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi}/>
+              <CardArtikel img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
             ))}
           </div>
         </div>

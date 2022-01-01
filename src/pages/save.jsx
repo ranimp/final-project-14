@@ -1,6 +1,6 @@
 import CardArtikel from "../components/cardArtikel";
 import CardDokumentasi from "../components/cardDokumentasi";
-import CardKomWebKat from "../components/cardKomWebKat";
+import CardKomWeb from "../components/cardKomWeb";
 import CardPaket from "../components/cardPaket";
 import CardPsikolog from "../components/cardPsikolog";
 import CardTestimoniPsikolog from "../components/cardTesti";
@@ -22,7 +22,7 @@ export default function Save() {
 
       <div className='bg-white text-black'>
         <div className='lg:mx-36 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-8 p-5'>
-          <CardKomWebKat />
+          <CardKomWeb />
         </div>
       </div>
 
