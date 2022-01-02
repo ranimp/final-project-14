@@ -31,11 +31,11 @@ export default function NavbarLogin() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="lg:px-3 py-2 flex items-center text-lg capitalize font-bold leading-snug text-dark-green hover:opacity-75" href='#'      
+                <Link
+                  className="lg:px-3 py-2 flex items-center text-lg capitalize font-bold leading-snug text-dark-green hover:opacity-75" to='/'      
                 >
                   <i className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2">beranda</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item block lg:hidden">
                 <a
@@ -65,22 +65,25 @@ export default function NavbarLogin() {
                   </span>
                   <ul tabindex="0" class="shadow menu dropdown-content bg-white rounded-box w-52 text-sm py-0">
                     <li className='hover:bg-light-green'>
-                      <a href="#">Konsultasi</a>
+                      <Link to="/konsultasi">Konsultasi</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Pendeteksi Masalah</a>
+                      <Link to="/psikolog">Profil Psikolog</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Artikel</a>
+                      <Link to="/">Pendeteksi Masalah</Link>
+                    </li> 
+                    <li className='hover:bg-light-green -mt-3'>
+                      <Link to="/artikel">Artikel</Link>
                     </li>
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Webinar</a>
+                      <Link to="/webinar">Webinar</Link>
                     </li>
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Komunitas</a>
+                      <Link to="/komunitas">Komunitas</Link>
                     </li>
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Pengalaman Pengguna</a>
+                      <Link to="/testimoni">Pengalaman Pengguna</Link>
                     </li>
                   </ul>
                 </a>
@@ -93,25 +96,25 @@ export default function NavbarLogin() {
                   </span>
                   <ul tabindex="0" className={"menu text-sm" + (fiturOpen ? ' block' : ' hidden')}>
                     <li className='hover:bg-light-green'>
-                      <a href="#">Konsultasi</a>
+                      <Link to="/konsultasi">Konsultasi</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Profil Psikolog</a>
+                      <Link to="/psikolog">Profil Psikolog</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Pendeteksi Masalah</a>
+                      <Link to="/">Pendeteksi Masalah</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Artikel</a>
+                      <Link to="/artikel">Artikel</Link>
                     </li>
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Webinar</a>
+                      <Link to="/webinar">Webinar</Link>
                     </li>
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Komunitas</a>
+                      <Link to="/komunitas">Komunitas</Link>
                     </li>
                     <li className='hover:bg-light-green -mt-3'>
-                      <a href="#">Pengalaman Pengguna</a>
+                      <Link to="/testimoni">Pengalaman Pengguna</Link>
                     </li>
                   </ul>
                 </a>
