@@ -23,27 +23,19 @@ export default function LoginPage() {
     });
   };
 
+  // axios post
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    listUser.forEach(user => {
-      if (user.email === values.email && user.password === values.password && user.email.length >= 1) {
-        setIsLogged(true)
-        localStorage.setItem("credential", JSON.stringify(user))
-        console.log("berhasil")
-      } else {
-        setIsFailed(true)
-        console.log("login gagal")
-      }
-    setErrors(validation(values));
-    })
+    fetch("https://be-cureit.herokuapp.com/login")
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem("credential", JSON.stringify(data))
+        // disini if nya
+      })
+      .catch(err => console.log(err))
+    // setErrors(validation(values));
   }
 
-  useEffect(() => {
-    fetch("https://be-cureit.herokuapp.com/list-users")
-      .then(response => response.json())
-      .then(data => setListUser(data))
-      .catch(err => console.log(err))
-  },[listUser, values])
   
   return (
       <div className=" bg-white font-poppins text-black">
