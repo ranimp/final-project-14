@@ -8,4 +8,7 @@ module.exports = {
     workshop : require('./workshop.png'),
     logo : require('./logo.png'),
     ig : require('./ig.svg'),
+    gmail : require('./gmail.png'),
+    telp : require('./telp.png'),
+    location : require('./location.png'),
 }

@@ -17,6 +17,7 @@ import DetailKomunitasPage from "./pages/detailKomunitas";
 import DetailTestimoniPage from "./pages/testimoni";
 import LoginPage from "./pages/login";
 import DaftarPage from "./pages/daftar";
+import AboutPage from "./pages/about";
 AOS.init();
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="/webinar" component={WebinarPage} />
             <Route exact path="/kategori" component={KategoriPage} />
             <Route exact path="/psikolog" component={PsikologPage} />
+            <Route exact path="/tentang" component={AboutPage} />
             <Route exact path="/daftar" component={DaftarPage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/" component={HomePage} />

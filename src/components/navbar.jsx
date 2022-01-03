@@ -103,11 +103,11 @@ export default function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a
-                  className="lg:px-3 py-2 flex items-center text-lg capitalize font-bold leading-snug text-dark-green hover:opacity-75" href="#"      
+                <Link
+                  className="lg:px-3 py-2 flex items-center text-lg capitalize font-bold leading-snug text-dark-green hover:opacity-75" to="/tentang"      
                 >
                   <i className="text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2">Tentang</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <Link

@@ -34,7 +34,7 @@ export default function HomePage() {
       <Navbar/>
       {/* section 1 */}
       <div className="bg-white pb-8 lg:pb-16">
-        <div className="container mx-auto px-5">
+        <div className="container mx-auto px-5 lg:px-16">
           <div className="flex flex-col-reverse lg:grid grid-cols-1 lg:grid-cols-6">
             <div className="col-span-1 lg:col-span-3 my-8 lg:my-20 font-poppins" data-aos="fade-right" data-aos-duration="1500">
               <h1 className="font-montserrat font-bold text-xl lg:text-5xl text-black lg:mb-2">Konsultasikan</h1>
@@ -156,8 +156,8 @@ export default function HomePage() {
       {/* section 5 */}
       <div className="bg-white pt-8 lg:py-16">
         <div data-aos="fade-up" data-aos-duration="1500">
-          <h1 className="container mx-auto px-5 font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">artikel menarik untuk kamu</h1>
-          <div className='lg:mx-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-5 text-black'>
+          <h1 className="container mx-auto px-5 lg:px-16 font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">artikel menarik untuk kamu</h1>
+          <div className='lg:mx-16 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-5 text-black'>
             {artikel.slice(0, 4).map((artikel) => (
               <CardArtikel img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
             ))}
