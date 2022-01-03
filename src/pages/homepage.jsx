@@ -101,9 +101,9 @@ export default function HomePage() {
                   <img className="w-20 lg:w-32 mx-auto mt-8" src={komunitas} alt='komunitas' />
                   <div className="card-body font-poppins mx-auto">
                     <h3 className="card-title font-montserrat text-sm -mt-9 lg:-mt-14 -mb-4 capitalize text-center">Forum Komunitas</h3>
-                    <div className="card-actions justify-center">
+                    <Link className="card-actions justify-center" to="/komunitas">
                       <Button type='more2'>learn more</Button>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className="card justify-center text-black bg-light-green">
@@ -119,18 +119,18 @@ export default function HomePage() {
                   <img className="w-14 lg:w-20 mx-auto mt-8" src={workshop} alt='ww' />
                   <div className="card-body font-poppins mx-auto">
                     <h3 className="card-title font-montserrat text-xs lg:text-sm -mt-2 -mb-2 lg:-mb-1 capitalize text-center">workshop & webinar</h3>
-                    <div className="card-actions justify-center">
+                    <Link className="card-actions justify-center" to="/webinar">
                       <Button type='more2'>learn more</Button>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className="card justify-center text-black bg-light-green">
                   <img className="w-14 lg:w-20 mx-auto mt-8" src={testimoni} alt='testimoni' />
                   <div className="card-body font-poppins mx-auto">
                     <h3 className="card-title font-montserrat text-xs lg:text-sm -mt-4 -mb-4 capitalize text-center">dengarkan pengalaman pengguna</h3>
-                    <div className="card-actions justify-center">
+                    <Link className="card-actions justify-center" to="/testimoni">
                       <Button type='more2'>learn more</Button>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -148,7 +148,9 @@ export default function HomePage() {
           <h1 className="text-center font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">profil psikolog</h1>
           <div className='lg:mx-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-black'>
             {psikolog.slice(0, 3).map((psikolog) => (
-              <CardPsikolog img={psikolog.gambar} title={psikolog.name} desc={psikolog.spesialis} link={`/psikolog/${psikolog._id}`}/>
+            <div key={psikolog._id}>
+              <CardPsikolog  img={psikolog.gambar} title={psikolog.name} desc={psikolog.spesialis} link={`/psikolog/${psikolog._id}`}/>
+            </div>
             ))}
           </div>
         </div>
@@ -159,7 +161,7 @@ export default function HomePage() {
           <h1 className="container mx-auto px-5 lg:px-16 font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">artikel menarik untuk kamu</h1>
           <div className='lg:mx-16 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-5 text-black'>
             {artikel.slice(0, 4).map((artikel) => (
-              <CardArtikel img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
+              <CardArtikel key={artikel._id} img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
             ))}
           </div>
         </div>

@@ -46,7 +46,7 @@ export default function DetailArtikelPage() {
             </div>
               {rekArtikel.slice(0,3).map((artikel) => (
                 <div className="my-3">
-                <CardArtikel img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
+                <CardArtikel key={artikel._id} img={artikel.gambar} title={artikel.judul} desc={artikel.deskripsi} link={`/artikel/${artikel._id}`}/>
                 </div> 
               ))}
           </div>

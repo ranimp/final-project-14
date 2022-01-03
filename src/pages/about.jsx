@@ -81,20 +81,20 @@ export default function AboutPage() {
             <div className="col-span-1 p-6 my-2 font-poppins">
               <form className="flex flex-col justify-center mx-2">
                 <div className="flex flex-col mb-4 mt-5 lg:mt-0">
-                  <label for="name" className="label text-sm lg:text-lg font-bold text-gray-700 block font-montserrat">Email</label>
+                  <label htmlFor="name" className="label text-sm lg:text-lg font-bold text-gray-700 block font-montserrat">Email</label>
                   <input type="name" name="name" id="name" value={values.name} onChange={handleChange}
                     placeholder="Enter Your Email"
-                    class="w-100 py-2 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 focus:border-indigo-500 focus:outline-none" />
+                    className="w-100 py-2 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 focus:border-indigo-500 focus:outline-none" />
                   <div className="text-xs text-red-600">
                     {errors.email && <p className="error">{errors.name}</p>}
                   </div>
                 </div>
-                <div class="relative mb-4">
-                  <label for="message"
+                <div className="relative mb-4">
+                  <label htmlFor="message"
                     className="label text-sm lg:text-lg font-bold text-gray-700 block font-montserrat">Message</label>
                   <textarea id="message" name="message" value={values.message} onChange={handleChange}
                     placeholder="Write a message..."
-                    class="w-full bg-white rounded-lg border border-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-56 text-base outline-none text-gray-800 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                    className="w-full bg-white rounded-lg border border-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-56 text-base outline-none text-gray-800 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                   <div className="text-xs text-red-600">
                     {errors.message && <p className="error">{errors.message}</p>}
                   </div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
                       <img className="w-10" src={gmail} alt="gmail" />
                     </div>
                     <div className="col-span-11 text-gray-700 font-poppins">
-                      <p className="text-xs lg:text-base ml-2 mt-2">Mswellbeing53@gmail.com</p>
+                      <p className="text-xs lg:text-base ml-2 lg:mt-2">Mswellbeing53@gmail.com</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-12 my-4">
@@ -129,7 +129,7 @@ export default function AboutPage() {
                       <img className="w-10" src={telp} alt="telp" />
                     </div>
                     <div className="col-span-11 text-gray-700 font-poppins">
-                      <p className="text-xs lg:text-base ml-2 mt-2">081317902408</p>
+                      <p className="text-xs lg:text-base ml-2 lg:mt-2">081317902408</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-12 my-4">

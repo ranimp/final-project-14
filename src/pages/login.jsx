@@ -101,9 +101,9 @@ export default function LoginPage() {
                   )}
                 </div>
               </div>
-              <div class="my-4">
+              <div className="my-4">
                 <input className="mr-2 leading-tight" type="checkbox" id="checkbox_id" />
-                <label className="text-sm" for="checkbox_id">
+                <label className="text-sm" htmlFor="checkbox_id">
                   Remember Me
                 </label>
               </div>

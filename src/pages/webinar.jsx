@@ -23,7 +23,7 @@ export default function WebinarPage() {
           <h1 className="text-center lg:text-left font-bold font-montserrat text-dark-green text-xl lg:text-4xl capitalize">Webinar dan Workshop</h1>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-black gap-6 px-5 my-6 lg:my-12'>
               {webinar.map((webinar) => (
-                <CardKomWebKat img={webinar.gambar} title={webinar.judul} desc={webinar.deskripsi} link={`/webinar/${webinar._id}`}/>
+                <CardKomWebKat key={webinar._id} img={webinar.gambar} title={webinar.judul} desc={webinar.deskripsi} link={`/webinar/${webinar._id}`}/>
               ))}           
           </div>
         </div>
