@@ -34,7 +34,7 @@ export default function DetailTestimoniPage() {
       <div className="container mt-16 px-5 lg:px-16 mb-12 mx-auto text-black">
         <div className="carousel rounded-box">
           {testimoni.map((testimoni) => (
-          <div className="w-full carousel-item grid">
+          <div className="w-full carousel-item grid" key={testimoni._id}>
             <h1 className="font-montserrat font-bold text-dark-green text-2xl lg:text-4xl capitalize mb-4">{testimoni.judul}</h1>
             <p className="font-poppins text-sm lg:text-base">Problema: {testimoni.problema}</p>
             <div className="grid grid-cols-1 lg:grid-cols-6">
@@ -55,10 +55,10 @@ export default function DetailTestimoniPage() {
           </div>
           ))}
         </div>
-        <div class="flex justify-center w-full py-4 space-x-2">
-          <div class="text-3xl text-dark-green">•</div> 
-          <div class="text-3xl text-dark-green">•</div> 
-          <div class="text-3xl text-dark-green">•</div> 
+        <div className="flex justify-center w-full py-4 space-x-2">
+          <div className="text-3xl text-dark-green">•</div> 
+          <div className="text-3xl text-dark-green">•</div> 
+          <div className="text-3xl text-dark-green">•</div> 
         </div>
       </div>
       <Footer />

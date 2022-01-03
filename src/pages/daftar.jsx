@@ -57,12 +57,12 @@ export default function DaftarPage() {
                 <img className="hidden mx-auto lg:flex w-9/12 py-12" src={ilustrasidaftar} alt="gambar"/>
               </div>
             </div>
-            <div className="col-span-1 lg:col-span-3 lg:my-10 mx-auto" data-aos="fade-left" data-aos-duration="1500">
+            <div className="col-span-1 lg:col-span-3 my-10 mx-auto" data-aos="fade-left" data-aos-duration="1500">
             <h1 className="text-center text-dark-green lg:mx-40 text-3xl font-bold ">
             Daftar Akun
             </h1>
             {/* form */}
-            <form className=" w-full mx-auto">
+            <form className=" w-full mx-auto my-5">
               {/* name */}
               <div>
                 <label className="label text-sm font-bold text-gray-700 block">
@@ -225,18 +225,18 @@ export default function DaftarPage() {
                 </div>
               </div>
 
-              <div class="my-4 cursor-pointer">
-              {/* <div class="p-6 card bordered">
-                <div class="form-control">
-                  <label class="cursor-pointer label">
-                    <span class="label-text">Remember me</span> 
-                    <input type="checkbox" checked="" class="checkbox checkbox-accent"/>
+              <div className="my-4 cursor-pointer">
+              {/* <div className="p-6 card bordered">
+                <div className="form-control">
+                  <label className="cursor-pointer label">
+                    <span className="label-text">Remember me</span> 
+                    <input type="checkbox" checked="" className="checkbox checkbox-accent"/>
                   </label>
                 </div>
               </div> */}
 
                 <input className="mr-2 leading-tight checkbox checkbox-sm checkbox-accent" type="checkbox" id="checkbox_id" />
-                <span className="text-sm" for="checkbox_id">
+                <span className="text-sm" htmlFor="checkbox_id">
                   Remember Me
                 </span>
               </div>

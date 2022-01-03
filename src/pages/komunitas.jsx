@@ -23,7 +23,7 @@ export default function KomunitasPage() {
           <h1 className="text-center lg:text-left font-bold font-montserrat text-dark-green text-xl lg:text-4xl capitalize">Komunitas untuk kamu</h1>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-black gap-6 px-5 my-6 lg:my-12'>
               {komunitas.map((komunitas) => (
-                <CardKomWebKat img={komunitas.gambar} title={komunitas.judul} desc={komunitas.deskripsi} link={`/komunitas/${komunitas._id}`}/>
+                <CardKomWebKat key={komunitas._id} img={komunitas.gambar} title={komunitas.judul} desc={komunitas.deskripsi} link={`/komunitas/${komunitas._id}`}/>
               ))}           
           </div>
         </div>
