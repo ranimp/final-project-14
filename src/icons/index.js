@@ -11,4 +11,5 @@ module.exports = {
     gmail : require('./gmail.png'),
     telp : require('./telp.png'),
     location : require('./location.png'),
+    edit : require('./edit.png')
 }
