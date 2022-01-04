@@ -19,7 +19,6 @@ export default function DetailWebinarPage() {
   return (
     <div className="bg-white">
       <Navbar />
-      <img src={webinar.gambar} className="object-cover w-full h-24 lg:h-72"/>
       <div className="container mt-16 px-5 lg:px-16 mb-8 lg:mb-12 mx-auto text-black font-poppins">
         <img src={webinar.gambar} className="w-58 mx-auto my-5"/>
         <div className="capitalize font-montserrat font-bold text-xl lg:text-4xl">deskripsi</div>

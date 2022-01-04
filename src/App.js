@@ -19,6 +19,7 @@ import LoginPage from "./pages/login";
 import DaftarPage from "./pages/daftar";
 import AboutPage from "./pages/about";
 import PenjadwalanPage from "./pages/penjadwalan";
+import ProfilPage from "./pages/profil";
 AOS.init();
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route exact path="/kategori" component={KategoriPage} />
             <Route exact path="/jadwal-konsultasi" component={PenjadwalanPage} />
             <Route exact path="/psikolog" component={PsikologPage} />
+            <Route exact path="/profil" component={ProfilPage} />
             <Route exact path="/tentang" component={AboutPage} />
             <Route exact path="/daftar" component={DaftarPage} />
             <Route exact path="/login" component={LoginPage} />
