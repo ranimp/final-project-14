@@ -3,23 +3,25 @@ import axios from "axios";
 import validation from "../components/validation";
 import Button from "../components/button";
 import ilustrasidaftar from "../images/ilustrasidaftar.png"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Redirect } from "react-router";
 
 export default function DaftarPage() {
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    phone: "",
     name: "",
     gender: "",
-    phone: "",
+    email: "",
+    email_ortu: "",
+    date: "",
+    password: "",
     confirmPassword: "",
+    member : "not member",
+    role: "user"
   });
 
-  const [listUser, setListUser] = useState([])
-  const [isLogged, setIsLogged] = useState(false)
-  const [isFailed, setIsFailed] = useState(false)
   const [errors, setErrors] = useState({});
+  const history = useHistory()
 
   const handleChange = (event) => {
     setValues({
@@ -30,31 +32,34 @@ export default function DaftarPage() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    listUser.forEach(user => {
-      if (user.email === values.email && user.password === values.password && user.email.length >= 1) {
-        setIsLogged(true)
-        localStorage.setItem("credential", JSON.stringify(user))
-        console.log("berhasil")
-      } else {
-        setIsFailed(true)
-        console.log("login gagal")
-      }
-    setErrors(validation(values));
+    // const loggedInUser = localStorage.getItem("credential");
+    // const iduser = loggedInUser.data.id
+    axios.post("https://be-cureit.herokuapp.com/register", {
+      name: values.name,
+      gender: values.gender,
+      email: values.email,
+      email_ortu: values.email_ortu,
+      no_hp: values.phone,
+      date: values.date,
+      password: values.password,
+      confirmPassword: values.confirmPassword,
+      member : values.member,
+      role: values.role,
+      // iduser
     })
+    .then(response => {
+      console.log(response,"Sukses menambahkan")
+      history.push("/login")
+    })
+    .catch(err => console.log(err))
+    setErrors(validation(values));
   }
-
-  useEffect(() => {
-    axios.get("https://be-cureit.herokuapp.com/list-users")
-      .then(response => response.json())
-      .then(data => setListUser(data))
-      .catch(err => console.log(err))
-  },[listUser, values])
   
   return (
       <div className=" bg-white font-poppins text-black">
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-6">            
-            <div className="hidden lg:block lg:col-span-3 bg-light-green" data-aos="fade-right" data-aos-duration="1500">
+            <div className="hidden lg:block lg:col-span-3 bg-light-green" data-aos="fade-right" data-aos-duration="1000">
               <div className="">
                 <h1 className="text-center text-dark-green lg:mx-40 text-3xl font-bold mt-10">
                   Let's Get Started!
@@ -62,7 +67,7 @@ export default function DaftarPage() {
                 <img className="hidden mx-auto lg:flex w-9/12 py-12" src={ilustrasidaftar} alt="gambar"/>
               </div>
             </div>
-            <div className="col-span-1 lg:col-span-3 my-10 mx-auto" data-aos="fade-left" data-aos-duration="1500">
+            <div className="col-span-1 lg:col-span-3 my-10 mx-auto" data-aos="fade-left" data-aos-duration="1000">
             <h1 className="text-center text-dark-green lg:mx-40 text-3xl font-bold ">
             Daftar Akun
             </h1>
@@ -99,7 +104,7 @@ export default function DaftarPage() {
                     value="Male"
                     onChange={handleChange}
                   />
-                  <label className="ml-2 text-xs">Male</label>
+                  <label className="ml-2 text-xs">Laki-laki</label>
                 </label>
                 <label className="inline-flex items-center ml-4 label text-sm font-bold text-gray-700">
                   <input
@@ -109,7 +114,7 @@ export default function DaftarPage() {
                     value="Female"
                     onChange={handleChange}
                   />
-                  <label className="ml-2 text-xs">Female</label>
+                  <label className="ml-2 text-xs">Perempuan</label>
                 </label>
                 <div className="text-xs text-red-600	">
                   {errors.gender && (
@@ -135,6 +140,7 @@ export default function DaftarPage() {
                   {errors.email && <p className="error">{errors.email}</p>}
                 </div>
               </div>
+
               {/* email */}
               <div className="mt-3">
                 <label className="label text-sm font-bold text-gray-700 block">
@@ -142,9 +148,9 @@ export default function DaftarPage() {
                 </label>
                 <input
                   type="email"
-                  name="email"
+                  name="email_ortu"
                   className="input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent"
-                  value={values.email}
+                  value={values.email_ortu}
                   onChange={handleChange}
                   placeholder="Enter Your Email"
                 ></input>
@@ -159,8 +165,8 @@ export default function DaftarPage() {
                   Nomor Telepon
                 </label>
                 <input
-                  type="tel"
-                  name="telepon"
+                  type="text"
+                  name="phone"
                   className="input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent"
                   value={values.phone}
                   onChange={handleChange}
@@ -248,14 +254,12 @@ export default function DaftarPage() {
 
               {/* submit */}
               <div>
-                {isFailed && (<div className="text-xs text-red-600 my-3">No Such Data</div>)}
                 <Button
                   def="default"
                   type="buyNow"
                   onClick={handleFormSubmit}
                 >
                   Login 
-                  { isLogged && (<Redirect to="/"/>) }
                 </Button>
               </div>
               <div className="text-center my-3">

@@ -12,7 +12,6 @@ export default function LoginPage() {
     password: "",
   });
 
-  const [listUser, setListUser] = useState([])
   const [isLogged, setIsLogged] = useState(false)
   const [isFailed, setIsFailed] = useState(false)
   const [errors, setErrors] = useState({});
@@ -27,21 +26,24 @@ export default function LoginPage() {
   // axios post
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    axios.get("https://be-cureit.herokuapp.com/login")
-      .then(response => response.json())
-      .then(data => {
-        localStorage.setItem("credential", JSON.stringify(data))
+    axios.post("https://be-cureit.herokuapp.com/login", {
+      email: values.email,
+      password: values.password
+    })
+      .then(response => {
         // disini if nya
-        if (data.email === values.email && data.password === values.password && data.email.length >= 1) {
-          setIsLogged(true)
-          console.log("berhasil")
-        } else {
-          setIsFailed(true)
-          console.log("login gagal")
-        }
+        localStorage.setItem("credential", JSON.stringify(response))
+        setIsLogged(true)
+        console.log("berhasil")
+        // const loggedInUser = localStorage.getItem("credential");
+        // if (loggedInUser.data.role)
       })
-      .catch(err => console.log(err))
-    // setErrors(validation(values));
+      .catch(err => {
+        console.log(err.response);
+        console.log('ini masuk ke catch');
+        console.log(err.response.data.error)
+      })
+    setErrors(validation(values));
   }
 
   
