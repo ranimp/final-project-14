@@ -22,12 +22,12 @@ const validation = (values) => {
       errors.phone = "Phone must contain letters, min 9 digit";
     }
     const passwordValidator =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_-])[A-Za-z\d@$!%*?&#^()_-]{8,}$/;
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     if (!values.password) {
       errors.password = "Password is required";
     } else if (!values.password.match(passwordValidator)) {
       errors.password =
-        "password must contain at least 8 characters, uppercase, lowercase, numbers, symbols";
+        "password invalid";
     }
     if (!values.confirmPassword) {
       errors.confirmPassword = "Confirm password is required";
