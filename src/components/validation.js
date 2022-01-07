@@ -15,6 +15,12 @@ const validation = (values) => {
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
       errors.email = "email invalid";
     }
+    const phoneValidator = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+    if (!values.phone) {
+      errors.phone = "Phone is required";
+    } else if (!values.phone.match(phoneValidator)) {
+      errors.phone = "Phone must contain letters, min 9 digit";
+    }
     const passwordValidator =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_-])[A-Za-z\d@$!%*?&#^()_-]{8,}$/;
     if (!values.password) {
