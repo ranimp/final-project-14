@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import validation from "../components/validation";
 import Button from "../components/button";
 import ilustrasilogin from "../images/ilustrasilogin.png"
@@ -26,11 +27,18 @@ export default function LoginPage() {
   // axios post
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    fetch("https://be-cureit.herokuapp.com/login")
+    axios.get("https://be-cureit.herokuapp.com/login")
       .then(response => response.json())
       .then(data => {
         localStorage.setItem("credential", JSON.stringify(data))
         // disini if nya
+        if (data.email === values.email && data.password === values.password && data.email.length >= 1) {
+          setIsLogged(true)
+          console.log("berhasil")
+        } else {
+          setIsFailed(true)
+          console.log("login gagal")
+        }
       })
       .catch(err => console.log(err))
     // setErrors(validation(values));

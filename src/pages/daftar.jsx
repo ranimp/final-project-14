@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import validation from "../components/validation";
 import Button from "../components/button";
 import ilustrasidaftar from "../images/ilustrasidaftar.png"
@@ -9,6 +10,10 @@ export default function DaftarPage() {
   const [values, setValues] = useState({
     email: "",
     password: "",
+    name: "",
+    gender: "",
+    phone: "",
+    confirmPassword: "",
   });
 
   const [listUser, setListUser] = useState([])
@@ -39,7 +44,7 @@ export default function DaftarPage() {
   }
 
   useEffect(() => {
-    fetch("https://be-cureit.herokuapp.com/list-users")
+    axios.get("https://be-cureit.herokuapp.com/list-users")
       .then(response => response.json())
       .then(data => setListUser(data))
       .catch(err => console.log(err))
