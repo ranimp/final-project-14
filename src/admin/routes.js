@@ -1,4 +1,3 @@
-import "../App.css"
 import '../index.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Dashboard from "./views/Dashboard";

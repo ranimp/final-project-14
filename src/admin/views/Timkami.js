@@ -20,10 +20,10 @@ setTim(fetch)
   return (
     <>
     <Sidebar />
-    <div className="relative md:ml-64 bg-blueGray-100">
+    <div className="bg-white relative md:ml-64">
     <Navbar/>
     <HeaderStats/>
-    <div className="sm :w-4/12 flex flex-col my-10 mx-10">
+    <div className="bg-white sm :w-4/12 flex flex-col my-10 mx-10">
       <div className="sm :w-4/12 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="sm :w-4/12 py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className=" sm :w-4/12 shadow overflow-hidden border-b border-gray-200">
@@ -116,16 +116,16 @@ setTim(fetch)
                       {tim.nama}
                       </span>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="mt-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
                       {tim.deskripsi}
                       </p>
-                    </td><td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    </td><td className="w-3/4 col-span-3 mt-8">
                       <p className="mt-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
                       {tim.posisi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="mx-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
                       {tim.gambar}
                       </p>
