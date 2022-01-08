@@ -56,6 +56,7 @@ export default function UserRoutes() {
       <BrowserRouter>
         <div className="App">
           <Switch>
+            <Route exact path="/403" component={LoginPage} />
             <Route exact path="/testimoni/:id" component={DetailTestimoniPage} />
             <Route exact path="/komunitas/:id" component={DetailKomunitasPage} />
             <Route exact path="/kategori/:id" component={DetailKategoriPage} />
