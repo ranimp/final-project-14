@@ -12,7 +12,8 @@ export default function LoginPage() {
     password: "",
   });
 
-  const [isLogged, setIsLogged] = useState(false)
+  const [userLogged, setUserLogged] = useState(false)
+  const [adminLogged, setAdminLogged] = useState(false)
   const [isFailed, setIsFailed] = useState(false)
   const [errors, setErrors] = useState({});
 
@@ -31,17 +32,33 @@ export default function LoginPage() {
       password: values.password
     })
       .then(response => {
-        // disini if nya
         localStorage.setItem("credential", JSON.stringify(response))
-        setIsLogged(true)
-        console.log("berhasil")
-        // const loggedInUser = localStorage.getItem("credential");
-        // if (loggedInUser.data.role)
+        const loggedInUser = JSON.parse(localStorage.getItem("credential"));
+        const foundUser = loggedInUser.data.role
+        console.log(foundUser)
+        switch(foundUser) {
+          case "admin":
+            setAdminLogged(true)
+            break;
+          case "user":
+            setUserLogged(true)
+            break;
+          default:
+            alert('tidak valid')
+            break;
+        }
       })
       .catch(err => {
-        console.log(err.response);
-        console.log('ini masuk ke catch');
-        console.log(err.response.data.error)
+        const error = err.response.data.error
+        const msg = error.toLowerCase()
+        switch(msg) {
+          case 'incorrect password!' :
+            alert('password salah!')
+            break;
+          default : 
+            alert('user tidak ditemukan')
+            break;
+        }
       })
     setErrors(validation(values));
   }
@@ -118,7 +135,8 @@ export default function LoginPage() {
                   onClick={handleFormSubmit}
                 >
                   Masuk 
-                  { isLogged && (<Redirect to="/"/>) }
+                  { userLogged && (<Redirect to="/"/>) }
+                  { adminLogged && (<Redirect to="/admin"/>) }
                 </Button>
               </div>
               <div className="text-center my-3">
