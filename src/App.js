@@ -1,9 +1,12 @@
-import logo from './logo.svg';
+import './index.css';
 import './App.css';
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import Routes from './admin/routes';
 function App() {
   return (
-    <h1 className="text-center font-bold">First Commit</h1>
+    <div>
+      <Routes/>
+    </div>
   );
 }
 
