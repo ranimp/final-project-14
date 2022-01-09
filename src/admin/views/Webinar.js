@@ -20,7 +20,7 @@ setWebinar(fetch)
   return (
     <>
     <Sidebar />
-    <div className="relative md:ml-64 bg-blueGray-100">
+    <div className="relative md:ml-64 bg-gray-300">
     <Navbar/>
     <HeaderStats/>
     <div className="sm :w-4/12 flex flex-col my-10 mx-10">
@@ -110,12 +110,12 @@ setWebinar(fetch)
                       {webinar.judul}
                       </span>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="mt-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
                       {webinar.deskripsi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="mx-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
                       {webinar.gambar}
                       </p>

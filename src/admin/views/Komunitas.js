@@ -21,7 +21,7 @@ setKomunitas(fetch)
   return (
     <>
     <Sidebar />
-    <div className="relative md:ml-64 bg-blueGray-100">
+    <div className="relative md:ml-64 bg-gray-300">
     <Navbar/>
     <HeaderStats/>
     <div className="sm :w-4/12 flex flex-col my-10 mx-10">
@@ -128,12 +128,12 @@ setKomunitas(fetch)
                       {komunitas.judul}
                       </span>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {komunitas.deskripsi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-2 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {komunitas.gambar}
                       </p>
@@ -143,12 +143,12 @@ setKomunitas(fetch)
                       {komunitas.judul_dokumentasi}
                       </span>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-2 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {komunitas.desk_dokumentasi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-2 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {komunitas.gambar_dokumentasi}
                       </p>

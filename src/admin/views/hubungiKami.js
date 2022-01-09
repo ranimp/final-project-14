@@ -20,7 +20,7 @@ setKontak(fetch)
   return (
     <>
     <Sidebar />
-    <div className="relative md:ml-64 bg-blueGray-100">
+    <div className="relative md:ml-64 bg-gray-300">
     <Navbar/>
     <HeaderStats/>
     <div className="sm :w-4/12 flex flex-col my-10 mx-10">

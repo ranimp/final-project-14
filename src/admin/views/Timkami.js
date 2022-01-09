@@ -20,7 +20,7 @@ setTim(fetch)
   return (
     <>
     <Sidebar />
-    <div className="bg-white relative md:ml-64">
+    <div className="bg-gray-300 relative md:ml-64">
     <Navbar/>
     <HeaderStats/>
     <div className="bg-white sm :w-4/12 flex flex-col my-10 mx-10">

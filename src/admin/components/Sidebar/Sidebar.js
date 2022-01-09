@@ -69,10 +69,10 @@ export default function Sidebar() {
             </div>
             <li className="inline-flex">
                 <Link
-                  className="text-blueGray-700 hover:text-dark-green text-xs  py-3 font-bold block"
+                  className="text-gray-400 hover:text-dark-green text-xs  py-3 font-bold block"
                   to="/admin"
                 >
-                  <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-newspaper text-gray-400 mr-2 text-sm"></i>{" "}
                   Dashboard
                 </Link>
               </li>
@@ -85,20 +85,20 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="inline-flex">
                 <Link
-                  className="text-blueGray-700 hover:text-dark-green text-xs  py-3 font-bold block"
+                  className="text-gray-400 hover:text-dark-green text-xs  py-3 font-bold block"
                   to="/admin/profiluser"
                 >
-                  <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-user-circle text-gray-400 mr-2 text-sm"></i>{" "}
                   Profil Pengguna
                 </Link>
               </li>
 
               <li className="inline-flex">
                 <Link
-                  className="text-blueGray-700 hover:text-dark-green text-xs  py-3 font-bold block"
+                  className="text-gray-400 hover:text-dark-green text-xs  py-3 font-bold block"
                   to="/admin/profilpsikolog"
                 >
-                  <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-user-circle text-gray-400 mr-2 text-sm"></i>{" "}
                   Profil Psikolog
                 </Link>
               </li>
@@ -112,59 +112,59 @@ export default function Sidebar() {
             </h6>
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/webinar">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/webinar">
                   <i className="fas fa-chalkboard-teacher mr-2 text-blueGray-300 text-base"></i>
                   Webinar
               </Link>
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/komunitas">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/komunitas">
                   <i className="fas fa-users mr-2 text-blueGray-300 text-base"></i>
                   Komunitas
                 
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/artikel">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/artikel">
                 
                   <i className="fas fa-book-reader mr-2 text-blueGray-300 text-base"></i>
                   Artikel
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/test">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/test">
                   <i className="fas fa-diagnoses mr-2 text-blueGray-300 text-base"></i>
                   Test Pendeteksi Masalah
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/jadwalkonsultasi">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/jadwalkonsultasi">
                   <i className="fas fa-clipboard-list mr-2 text-blueGray-300 text-base"></i>
                   Jadwal Konsultasi
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/datapembayaran">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/datapembayaran">
                 
                   <i className="fas fa-database mr-2 text-blueGray-300 text-base"></i>
                   Data Pembayaran
                
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/hubungikami">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/hubungikami">
                   <i className="fas fa-phone-volume mr-2 text-blueGray-300 text-base"></i>
                   Hubungi Kami
                 
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/testimoni">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/testimoni">
                   <i className="fas fa-address-card mr-2 text-blueGray-300 text-base"></i>
                   Testimoni 
               </Link>
 
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/pengalamanuser">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/pengalamanuser">
                   <i className="fas fa-house-user mr-2 text-blueGray-300 text-base"></i>
                   Pengalaman Pengguna
               </Link>
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/kategorimasalah">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/kategorimasalah">
                   <i className="fas fa-clipboard-list mr-2 text-blueGray-300 text-base"></i>
                   Kategori Masalah
               </Link>
-              <Link className="inline-flex text-blueGray-700 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/timkami">
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/timkami">
                   <i className="fas fa-users mr-2 text-blueGray-300 text-base"></i>
                   Tim Kami
                 
