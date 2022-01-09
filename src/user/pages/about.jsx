@@ -7,47 +7,49 @@ import CardArtikel from "../components/cardArtikel";
 import CardTim from "../components/cardTimKami";
 import Button from "../components/button";
 import { gmail, location, telp } from "../icons";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function AboutPage() {
   const [user, setUser] = useState()
-    const [showModal, setShowModal] = useState(false);
-    const [listUser, setListUser] = useState([])
+  const [showModal, setShowModal] = useState(false);
+  const [listUser, setListUser] = useState([])
 
-    useEffect(() => {
-        const loggedInUser = localStorage.getItem("credential");
-        if (loggedInUser) {
-        const foundUser = JSON.parse(loggedInUser);
-        setUser(foundUser);
-        }
-    }, []);
+  useEffect(() => {
+      const loggedInUser = localStorage.getItem("credential");
+      if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+      }
+  }, []);
 
-    const [values, setValues] = useState({
-        name: "",
-        message: "",
-    });
+  const [values, setValues] = useState({
+      name: "",
+      message: "",
+  });
 
-    const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
-    const handleChange = (event) => {
-        setValues({
-        ...values,
-        [event.target.name]: event.target.value,
-        });
-    };
+  const handleChange = (event) => {
+      setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+      });
+  };
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-        if (values.name.length >= 1 && values.message.length >= 1) {
-          setShowModal(true)
-        } else {
-          console.log("pesan gagal")
-          // setErrors(validation(values));
-        }
-    };
+  const handleFormSubmit = (event) => {
+      event.preventDefault();
+      if (values.name.length >= 1 && values.message.length >= 1) {
+        setShowModal(true)
+      } else {
+        console.log("pesan gagal")
+        // setErrors(validation(values));
+      }
+  };
+
   return (
     <div className="bg-white">
       {/* header */}
-      <Navbar />
+      {user? <NavbarLogin/>:<Navbar />}
       <div className="mb-12 lg:mb-24">
         <img src={about}/>
       </div>
