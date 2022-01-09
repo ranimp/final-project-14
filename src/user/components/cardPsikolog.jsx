@@ -5,7 +5,7 @@ import Button from './button';
 
 export default function CardPsikolog({img, title, desc, link}) {
   return (
-    <>
+    <Link to={link}>
       <div className="card text-center">
         <div className='flex flex-col items-center pt-10'>
           <img className="rounded-full object-cover w-48 h-48" src={img} />
@@ -18,6 +18,6 @@ export default function CardPsikolog({img, title, desc, link}) {
           </Link>
         </div>
       </div> 
-    </>
+    </Link>
   )
 }

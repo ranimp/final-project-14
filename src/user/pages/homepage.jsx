@@ -8,10 +8,20 @@ import Footer from "../components/footer";
 import Button from "../components/button";
 import CardPsikolog from "../components/cardPsikolog";
 import CardArtikel from "../components/cardArtikel";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function HomePage() {
   const [psikolog, setPsikolog] = useState([])
   const [artikel, setArtikel] = useState([])
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
   useEffect(() => {
     axios.get("https://be-cureit.herokuapp.com/psikolog")
@@ -31,7 +41,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Navbar/>
+      {user ? <NavbarLogin/>:<Navbar/>}
       {/* section 1 */}
       <div className="bg-white pb-8 lg:pb-16">
         <div className="container mx-auto px-5 lg:px-16">

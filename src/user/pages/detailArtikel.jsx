@@ -2,13 +2,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Button from "../components/button";
 import { useParams } from "react-router-dom";
 import CardArtikel from "../components/cardArtikel";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function DetailArtikelPage() {
   const [artikel, setArtikel] = useState([])
   const [rekArtikel, setRekArtikel] = useState([])
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
   useEffect(() => {
     axios.get(`https://be-cureit.herokuapp.com/artikel/${id}`)
@@ -30,7 +39,7 @@ export default function DetailArtikelPage() {
 
   return (
     <div className="bg-white">
-      <Navbar />
+      {user ? <NavbarLogin/> : <Navbar />}
       <div className="container mt-8 lg:mt-16 px-5 lg:px-16 mb-12 mx-auto text-black">
         <h1 className="font-montserrat text-center font-bold text-dark-green text-2xl lg:text-4xl capitalize mb-5 lg:mb-12">{artikel.judul}</h1>
         <img className="mx-auto mb-5" src={artikel.gambar} alt="gambar"/>

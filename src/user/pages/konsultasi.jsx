@@ -4,11 +4,21 @@ import axios from "axios";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import CardPaket from "../components/cardPaket";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function KonsultasiPage() {
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
   return (
     <div className="bg-white">
-      <Navbar />
+      {user ? <NavbarLogin/>:<Navbar />}
       <div className="container mx-auto mt-16 px-5 mb-12">
         <h1 className="font-montserrat font-bold text-dark-green text-2xl lg:text-4xl capitalize text-center mb-4">konseling online</h1>
         <p className="font-poppins text-sm lg:text-base text-black text-center">Efektif  karena bisa bicara langsung dengan konselor melalui chat/video call. </p>

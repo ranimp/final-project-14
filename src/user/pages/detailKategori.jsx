@@ -4,9 +4,19 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Button from "../components/button";
 import { useParams, Link } from "react-router-dom";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function DetailKategoriPage() {
   const [kategori, setKategori] = useState([])
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
   useEffect(() => {
     axios.get(`https://be-cureit.herokuapp.com/kategori/${id}`)
@@ -20,7 +30,7 @@ export default function DetailKategoriPage() {
 
   return (
     <div className="bg-white">
-      <Navbar />
+      {user ? <NavbarLogin/> : <Navbar />}
       <div className="container mt-8 lg:mt-16 px-5 lg:px-16 mb-12 mx-auto text-black">
         <h1 className="text-center lg:text-left font-montserrat font-bold text-dark-green text-2xl lg:text-4xl capitalize mb-5 lg:mb-12">pilih kategori masalah</h1>
         <h1 className="font-montserrat text-center font-bold text-dark-green text-xl lg:text-3xl capitalize mb-5 lg:mb-12">{kategori.judul}</h1>

@@ -8,6 +8,9 @@ export default function NavbarLogin() {
 	const [navbarOpen, setNavbarOpen] = useState(false)
   const [fiturOpen, setFiturOpen] = useState(false)
   const [profilOpen, setProfilOpen] = useState(false)
+  const handleLogout = () => {
+    localStorage.clear();
+  };
 	return (
 		<>
       <nav className="font-montserrat sticky top-0 inset-x-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow-md">
@@ -137,13 +140,13 @@ export default function NavbarLogin() {
                   </span>
                   <ul tabindex="0" class="shadow menu dropdown-content bg-white rounded-box w-52 text-sm py-0 capitalize">
                     <li className='hover:bg-light-green'>
-                      <Link to="/">profil saya</Link>
+                      <Link to="/profil">profil saya</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
                       <Link to="/">edit profil</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/">logout</Link>
+                      <Link to="/" onClick={handleLogout}>logout</Link>
                     </li>
                   </ul>
                 </a>
@@ -152,7 +155,7 @@ export default function NavbarLogin() {
                 <a
                   className="lg:px-3 flex items-center text-sm capitalize font-bold leading-snug text-white hover:opacity-75 py-2 lg:py-0"              
                 >
-                <Button def="default" type="signUp">logout</Button>
+                <Button def="default" type="signUp" onClick={handleLogout}>logout</Button>
                 </a>
               </li> 
             </ul>

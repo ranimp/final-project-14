@@ -4,7 +4,7 @@ import Button from './button';
 
 export default function CardKategori({img, title, link}) {
   return (
-    <div className='bg-light-green'>
+    <Link className='bg-light-green' to={link}>
       <div class="card justify-center">
         <div className='flex flex-col items-center'>
           <img className="w-28 h-28 lg:w-40 lg:h-40 mx-auto p-5" src={img}/>
@@ -16,6 +16,6 @@ export default function CardKategori({img, title, link}) {
           </Link>
         </div>
       </div> 
-    </div>
+    </Link>
   )
 }

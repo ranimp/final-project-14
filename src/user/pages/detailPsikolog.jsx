@@ -2,13 +2,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import CardPaket from "../components/cardPaket";
 import Button from "../components/button";
 import CardTestimoniPsikolog from "../components/cardTesti";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function DetailPsikologPage() {
   const [psikolog, setPsikolog] = useState([])
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
   useEffect(() => {
     axios.get(`https://be-cureit.herokuapp.com/psikolog/${id}`)
@@ -21,7 +30,7 @@ export default function DetailPsikologPage() {
 
   return (
     <div className="bg-white">
-      <Navbar />
+      {user ? <NavbarLogin/> : <Navbar />}
       <div className="container mt-16 px-5 lg:px-16 mb-12 mx-auto text-black">
         <h1 className="font-montserrat font-bold text-dark-green text-2xl lg:text-4xl capitalize mb-4">profil psikolog</h1>
         <p className="font-poppins text-sm lg:text-base">Ramah, Profesional, dan non-judgemental </p>
@@ -39,9 +48,9 @@ export default function DetailPsikologPage() {
             <div className="font-poppins text-xs lg:text-sm">
             {psikolog.deskripsi}
             </div>
-            <div className="my-8">
+            <Link className="my-8" to='/konsultasi'>
               <Button type='pilihPaket' def='default'>jadwalkan konsultasi</Button>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="font-poppins text-sm lg:text-base text-center font-bold mt-5">Testimoni  Konsultasi Untuk {psikolog.name}</div>
