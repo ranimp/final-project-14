@@ -4,7 +4,7 @@ import notfound from "../images/404.png"
 
 export default function NotFound() {
   return (
-    <div className="bg-dark-green py-32 lg:py-12 h-screen text-black">
+    <div className="bg-dark-green py-32 lg:py-12 h-screen lg:h-auto text-black">
       <div className="flex flex-col items-center justify-center w-11/12 bg-white mx-auto py-8">
         <img src={notfound} alt='404' className="lg:w-5/12 mb-2"/>
         <h1 className="font-montserrat font-bold text-xl lg:text-4xl">Halaman Tidak Ditemukan</h1>
