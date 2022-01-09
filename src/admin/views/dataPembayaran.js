@@ -6,9 +6,29 @@ import Navbar from '../components/Navbars/Navbar';
 import HeaderStats from '../components/Headers/HeaderStats';
 import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
+import { useParams, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 export default function DataPembayaran() {
+  const [admin, setAdmin] = useState(false)
+  const history = useHistory()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const logged = JSON.parse(loggedInUser);
+      const foundUser = logged.data.role
+      if (foundUser === 'admin') {
+        setAdmin(true);
+      } else if (foundUser === 'user') {
+        history.push('/403')
+      }
+    } else {
+      history.push('/login')
+    }
+  }, []);
   return (
     <>
+    {admin && <div>
     <Sidebar />
     <div className="relative md:ml-64 bg-gray-300">
     <Navbar/>
@@ -122,6 +142,7 @@ export default function DataPembayaran() {
     </div>
     <Footer/>
       </div>
+      </div>}
     </>
   );
 }

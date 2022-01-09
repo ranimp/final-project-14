@@ -8,8 +8,28 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
+
 export default function TimKami() {
   const [tim, setTim] = useState([])
+  const [admin, setAdmin] = useState(false)
+  const history = useHistory()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const logged = JSON.parse(loggedInUser);
+      const foundUser = logged.data.role
+      if (foundUser === 'admin') {
+        setAdmin(true);
+      } else if (foundUser === 'user') {
+        history.push('/403')
+      }
+    } else {
+      history.push('/login')
+    }
+  }, []);
+
   useEffect(() => {
 axios.get(`https://be-cureit.herokuapp.com/tim`)
 .then (res => {
@@ -19,6 +39,7 @@ setTim(fetch)
 },[])
   return (
     <>
+    {admin && <div>
     <Sidebar />
     <div className="bg-gray-300 relative md:ml-64">
     <Navbar/>
@@ -140,6 +161,7 @@ setTim(fetch)
     </div>
     <Footer/>
       </div>
+      </div>}
     </>
   );
 }

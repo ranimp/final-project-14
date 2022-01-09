@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 // components
 import Sidebar from '../components/Sidebar/Sidebar';
 import Navbar from '../components/Navbars/Navbar';
@@ -11,7 +11,23 @@ import Footer from "../components/Footers/Footer";
 
 export default function Artikel() {
     const [artikel, setArtikel] = useState([])
+    const [admin, setAdmin] = useState(false)
+  const history = useHistory()
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const logged = JSON.parse(loggedInUser);
+      const foundUser = logged.data.role
+      if (foundUser === 'admin') {
+        setAdmin(true);
+      } else if (foundUser === 'user') {
+        history.push('/403')
+      }
+    } else {
+      history.push('/login')
+    }
+  }, []);
   useEffect(() => {
     axios.get(`https://be-cureit.herokuapp.com/artikel`)
     .then (res => {
@@ -23,6 +39,7 @@ export default function Artikel() {
   
   return (
     <>
+    {admin && <div>
     <Sidebar />
     <div className="relative md:ml-64 bg-gray-300">
     <Navbar/>
@@ -134,6 +151,7 @@ export default function Artikel() {
     </div>
     <Footer/>
       </div>
+      </div>}
     </>
   );
 }

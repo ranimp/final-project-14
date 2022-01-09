@@ -1,10 +1,31 @@
 import { Link } from "react-router-dom";
 import Navbar from '../components/Navbars/Navbar';
 import Footer from "../components/Footers/Footer";
+import { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 
 export default function TDtest() {
+    const [admin, setAdmin] = useState(false)
+    const history = useHistory()
+  
+    useEffect(() => {
+      const loggedInUser = localStorage.getItem("credential");
+      if (loggedInUser) {
+        const logged = JSON.parse(loggedInUser);
+        const foundUser = logged.data.role
+        if (foundUser === 'admin') {
+          setAdmin(true);
+        } else if (foundUser === 'user') {
+          history.push('/403')
+        }
+      } else {
+        history.push('/login')
+      }
+    }, []);
+
     return(
-<div>
+<>
+{admin && <div>
     <Navbar/>
     <div className="flex justify-center items-center w-full bg-dark-green">
     <div className="w-1/2 bg-white rounded shadow-2xl p-8 m-4">
@@ -32,6 +53,7 @@ export default function TDtest() {
     </div>
 </div>
     <Footer/>
-</div>
+    </div>}
+</>
     );
 }

@@ -146,14 +146,14 @@ export default function NavbarLogin() {
                       <Link to="/">edit profil</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/" onClick={handleLogout}>logout</Link>
+                      <Link to="/login" onClick={handleLogout}>logout</Link>
                     </li>
                   </ul>
                 </a>
               </li>
               <li className="nav-item block lg:hidden">
                 <Link
-                  className="lg:px-3 flex items-center text-sm capitalize font-bold leading-snug text-white hover:opacity-75 py-2 lg:py-0" to="/"             
+                  className="lg:px-3 flex items-center text-sm capitalize font-bold leading-snug text-white hover:opacity-75 py-2 lg:py-0" to="/login"             
                 >
                 <Button def="default" type="signUp" onClick={handleLogout}>logout</Button>
                 </Link>

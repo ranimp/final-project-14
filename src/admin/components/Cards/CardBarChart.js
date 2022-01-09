@@ -107,7 +107,7 @@ export default function CardBarChart() {
               <h6 className="uppercase text-gray-400 mb-1 text-xs font-semibold">
                 Performance
               </h6>
-              <h2 className="text-gray-400 text-xl font-semibold">
+              <h2 className="text-black text-xl font-semibold">
                 Total Konseling
               </h2>
             </div>
