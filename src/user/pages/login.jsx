@@ -65,7 +65,7 @@ export default function LoginPage() {
 
   
   return (
-      <div className=" bg-white font-poppins text-black">
+      <div className="h-screen bg-white font-poppins text-black">
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-6">            
             <div className="hidden lg:block lg:col-span-3 bg-light-green" data-aos="fade-right" data-aos-duration="1500">

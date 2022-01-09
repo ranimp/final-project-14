@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CardArtikel({img, title, desc, link}) {
   return (
-    <>
+    <Link to={link}>
       <div className="card lg:card-side card-bordered bg-light-green border-light-green">
         <img className="object-scale-down w-48 mx-auto p-5" src={img}/>
         <div className="card-body -my-3 lg:-ml-8 font-poppins">
@@ -14,6 +14,6 @@ export default function CardArtikel({img, title, desc, link}) {
           </div>
         </div>
       </div>
-    </>
+    </Link>
   )
 }
