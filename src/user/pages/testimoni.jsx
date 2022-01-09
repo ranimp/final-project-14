@@ -3,15 +3,24 @@ import axios from "axios";
 import ReactPlayer from 'react-player'
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Button from "../components/button";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function DetailTestimoniPage() {
   const [testimoni, setTestimoni] = useState([])
   const [testiId, setTestiId] = useState([])
+  const [user, setUser] = useState()
 
   useEffect(() => {
-    axios.get(`https://be-cureit.herokuapp.com/testimoni/`)
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
+
+  useEffect(() => {
+    axios.get(`https://be-cureit.herokuapp.com/pengalaman/`)
     .then (res => {
       const fetch = res.data
       setTestimoni(fetch)
@@ -19,7 +28,7 @@ export default function DetailTestimoniPage() {
   },[testimoni])
 
   useEffect(() => {
-    axios.get(`https://be-cureit.herokuapp.com/testimoni/${id}`)
+    axios.get(`https://be-cureit.herokuapp.com/pengalaman/${id}`)
     .then (res => {
       const fetch = res.data
       setTestiId(fetch)
@@ -30,7 +39,7 @@ export default function DetailTestimoniPage() {
 
   return (
     <div className="bg-white">
-      <Navbar />
+      {user ? <NavbarLogin/>:<Navbar />}
       <div className="container mt-16 px-5 lg:px-16 mb-12 mx-auto text-black">
         <div className="carousel rounded-box">
           {testimoni.map((testimoni) => (

@@ -48,6 +48,8 @@ import TDtestimoni from './admin/views/TDtestimoni';
 import TDpengalaman from './admin/views/TDpengalaman';
 import TDkategori from './admin/views/TDkategori';
 import TDtim from './admin/views/TDtim';
+import NotFound from './user/pages/404notfound';
+import Forbidden from './user/pages/403forbidden';
 AOS.init();
 
 export default function UserRoutes() {
@@ -56,7 +58,7 @@ export default function UserRoutes() {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/403" component={LoginPage} />
+            <Route exact path="/403" component={Forbidden} />
             <Route exact path="/testimoni/:id" component={DetailTestimoniPage} />
             <Route exact path="/komunitas/:id" component={DetailKomunitasPage} />
             <Route exact path="/kategori/:id" component={DetailKategoriPage} />
@@ -103,6 +105,7 @@ export default function UserRoutes() {
             <Route exact path="/admin/tambahdatapengalaman" component={TDpengalaman} />
             <Route exact path="/admin/tambahdatakategori" component={TDkategori} />
             <Route exact path="/admin/tambahdatatimkami" component={TDtim} />
+            <Route exact path="*" component={NotFound} />
           </Switch>
         </div>
       </BrowserRouter>

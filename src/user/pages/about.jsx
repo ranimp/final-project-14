@@ -3,51 +3,61 @@ import axios from "axios";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import about from "../images/about.png"
-import CardArtikel from "../components/cardArtikel";
 import CardTim from "../components/cardTimKami";
 import Button from "../components/button";
 import { gmail, location, telp } from "../icons";
+import NavbarLogin from "../components/navbarlogin";
 
 export default function AboutPage() {
   const [user, setUser] = useState()
-    const [showModal, setShowModal] = useState(false);
-    const [listUser, setListUser] = useState([])
+  const [showModal, setShowModal] = useState(false);
+  const [listUser, setListUser] = useState([])
+  const [tim, setTim] = useState([])
+  
+  useEffect(() => {
+    axios.get("https://be-cureit.herokuapp.com/tim")
+    .then (res => {
+      const fetch = res.data
+      setTim(fetch)
+    })
+  },[])
 
-    useEffect(() => {
-        const loggedInUser = localStorage.getItem("credential");
-        if (loggedInUser) {
-        const foundUser = JSON.parse(loggedInUser);
-        setUser(foundUser);
-        }
-    }, []);
+  useEffect(() => {
+      const loggedInUser = localStorage.getItem("credential");
+      if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+      }
+  }, []);
 
-    const [values, setValues] = useState({
-        name: "",
-        message: "",
-    });
+  const [values, setValues] = useState({
+      name: "",
+      message: "",
+  });
 
-    const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
-    const handleChange = (event) => {
-        setValues({
-        ...values,
-        [event.target.name]: event.target.value,
-        });
-    };
+  const handleChange = (event) => {
+      setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+      });
+  };
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-        if (values.name.length >= 1 && values.message.length >= 1) {
-          setShowModal(true)
-        } else {
-          console.log("pesan gagal")
-          // setErrors(validation(values));
-        }
-    };
+  const handleFormSubmit = (event) => {
+      event.preventDefault();
+      if (values.name.length >= 1 && values.message.length >= 1) {
+        setShowModal(true)
+      } else {
+        console.log("pesan gagal")
+        // setErrors(validation(values));
+      }
+  };
+
   return (
     <div className="bg-white">
       {/* header */}
-      <Navbar />
+      {user? <NavbarLogin/>:<Navbar />}
       <div className="mb-12 lg:mb-24">
         <img src={about}/>
       </div>
@@ -56,10 +66,9 @@ export default function AboutPage() {
         <div data-aos="fade-up" data-aos-duration="1500">
           <h1 className="text-center lg:text-left font-bold font-montserrat text-dark-green text-2xl lg:text-4xl capitalize">tim kami</h1>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-8 lg:p-0 text-black lg:my-8'>
-            <CardTim />
-            <CardTim />
-            <CardTim />
-            <CardTim />
+            {tim.map((tim) => (
+              <CardTim title={tim.nama} img={tim.gambar} desc={tim.deskripsi} position={tim.posisi}/>
+            ))}
           </div>
         </div>
       </div>

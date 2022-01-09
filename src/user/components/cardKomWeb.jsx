@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CardKomWeb({img, title, desc, link}) {
   return (
-    <>
+    <Link to={link}>
       <div className="card shadow-2xl justify-center">
         <img className="object-cover w-58 h-58 mx-auto" src={img} className="rounded-lg"/>
         <div className="card-body font-poppins -mx-3">
@@ -14,6 +14,6 @@ export default function CardKomWeb({img, title, desc, link}) {
           </div>
         </div>
       </div> 
-    </>
+    </Link>
   )
 }

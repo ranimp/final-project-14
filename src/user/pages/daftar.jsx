@@ -4,7 +4,6 @@ import validation from "../components/validation";
 import Button from "../components/button";
 import ilustrasidaftar from "../images/ilustrasidaftar.png"
 import { Link, useHistory } from "react-router-dom";
-import { Redirect } from "react-router";
 
 export default function DaftarPage() {
   const [values, setValues] = useState({
@@ -32,8 +31,6 @@ export default function DaftarPage() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // const loggedInUser = localStorage.getItem("credential");
-    // const iduser = loggedInUser.data.id
     axios.post("https://be-cureit.herokuapp.com/register", {
       name: values.name,
       gender: values.gender,
@@ -45,7 +42,6 @@ export default function DaftarPage() {
       confirmPassword: values.confirmPassword,
       member : values.member,
       role: values.role,
-      // iduser
     })
     .then(response => {
       console.log(response,"Sukses menambahkan")
@@ -208,7 +204,6 @@ export default function DaftarPage() {
                   onChange={handleChange}
                   placeholder="Enter Your Password"
                 ></input>
-                {/* <button onClick={togglePassword}>Show Password</button> */}
                 <div className="text-xs text-red-600	">
                   {errors.password && (
                     <p className="error">{errors.password}</p>
@@ -237,15 +232,6 @@ export default function DaftarPage() {
               </div>
 
               <div className="my-4 cursor-pointer">
-              {/* <div className="p-6 card bordered">
-                <div className="form-control">
-                  <label className="cursor-pointer label">
-                    <span className="label-text">Remember me</span> 
-                    <input type="checkbox" checked="" className="checkbox checkbox-accent"/>
-                  </label>
-                </div>
-              </div> */}
-
                 <input className="mr-2 leading-tight checkbox checkbox-sm checkbox-accent" type="checkbox" id="checkbox_id" />
                 <span className="text-sm" htmlFor="checkbox_id">
                   Remember Me
@@ -259,11 +245,8 @@ export default function DaftarPage() {
                   type="buyNow"
                   onClick={handleFormSubmit}
                 >
-                  Login 
+                  Daftar
                 </Button>
-              </div>
-              <div className="text-center my-3">
-                <Link to="/login" className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800">Lupa password?</Link>
               </div>
               <div className="text-center lg:flex lg:justify-center my-4">
                 <p className="inline-block text-sm text-black-500">
