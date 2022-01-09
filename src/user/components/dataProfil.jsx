@@ -5,9 +5,6 @@ export default function ProfilData() {
   return (
     <div className="bg-light-green font-poppins p-3 lg:p-12 rounded-lg">
       <div className="mb-8">
-        <Link to="/">
-          <img src={edit} className="w-6 float-right" />
-        </Link>
         <h1 className="text-dark-green text-xl lg:text-3xl capitalize font-montserrat font-bold">profil saya</h1>
       </div>
       <div className="grid grid-cols-6 text-black">

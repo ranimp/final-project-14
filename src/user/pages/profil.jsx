@@ -7,6 +7,7 @@ import ProfilData from "../components/dataProfil";
 import profil from "../images/profil.png"
 import DataKonsultasi from "../components/dataKonsultasi";
 import NavbarLogin from "../components/navbarlogin";
+import SidebarProfil from "../components/sidebarProfil";
 
 export default function ProfilPage() {  
   const [user, setUser] = useState()
@@ -36,11 +37,18 @@ export default function ProfilPage() {
               <h1 className="text-xl lg:text-3xl inline-block font-montserrat font-bold ml-4">Budi Santoso</h1>
             </div>
           </div>
-          <div className="my-12">
-            <ProfilData />
-          </div>
-          <div>
-            <DataKonsultasi />
+          <div className="grid grid-cols-12">
+            <div className="col-span-3 my-12">
+              <SidebarProfil/>
+            </div>
+            <div className="col-span-9 ml-2 lg:ml-5">
+              <div className="mt-12 mb-4 lg:my-12">
+                <ProfilData />
+              </div>
+              <div>
+                <DataKonsultasi />
+              </div>
+            </div>
           </div>
         </div>
         <Footer />
