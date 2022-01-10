@@ -33,16 +33,16 @@ export default function TDjadwal() {
         <form action="/" method="post">
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-gray-900" for="first_name">Judul</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name"/>
+                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"/>
             </div>
             <div class="flex flex-col mb-4">
                         <label className="text-left mb-2 font-bold text-lg text-gray-900">Deskripsi</label>
 
-                        <textarea rows="5" name="message" id="message" class="w-full px-3 py-2 border text-grey-800" required></textarea>
+                        <textarea rows="5" name="message" id="message" class="w-full px-3 py-2 border text-black" required></textarea>
             </div>
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-gray-900" for="File">Gambar</label>
-                <input className="border py-2 px-3 text-grey-800" type="file" name="file" id="file"/>
+                <input className="border py-2 px-3 text-black" type="file" name="file" id="file"/>
             </div>
             <Link
             type="button"

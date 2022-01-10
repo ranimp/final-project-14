@@ -32,11 +32,11 @@ export default function TDkontak() {
         <h1 className=" block w-full text-center  text-dark-green capitalize text-2xl mb-6">Tambah Data</h1>
         <form action="/" method="post">
             <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-gray-900" for="first_name">Email</label>
+                <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Email</label>
                 <input className="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name"/>
             </div>
             <div class="flex flex-col mb-4">
-                        <label className="text-left mb-2 font-bold text-lg text-gray-900">Keluhan</label>
+                        <label className="text-left mb-2 font-bold text-lg text-black">Keluhan</label>
 
                         <textarea rows="5" name="message" id="message" class="w-full px-3 py-2 border text-grey-800" required></textarea>
             </div>

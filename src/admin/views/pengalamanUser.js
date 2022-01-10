@@ -132,22 +132,22 @@ useEffect(() => {
                     {testimoni._id}
                     </span>
                   </td>
-                  <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                  <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.judul}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.deskripsi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="mx-2 line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.video}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.problema}
                       </p>
