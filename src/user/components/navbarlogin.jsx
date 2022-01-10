@@ -50,7 +50,7 @@ export default function NavbarLogin() {
                       <Link to="/profil">profil saya</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/">edit profil</Link>
+                      <Link to="/edit-profil">edit profil</Link>
                     </li> 
                   </ul>
                 </a>
@@ -143,7 +143,7 @@ export default function NavbarLogin() {
                       <Link to="/profil">profil saya</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/">edit profil</Link>
+                      <Link to="/edit-profil">edit profil</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
                       <Link to="/login" onClick={handleLogout}>logout</Link>

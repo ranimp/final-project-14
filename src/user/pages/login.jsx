@@ -13,6 +13,7 @@ export default function LoginPage() {
   });
 
   const [userLogged, setUserLogged] = useState(false)
+  const [passwordShown, setPasswordShown] = useState(false);
   const [adminLogged, setAdminLogged] = useState(false)
   const [isFailed, setIsFailed] = useState(false)
   const [errors, setErrors] = useState({});
@@ -65,7 +66,7 @@ export default function LoginPage() {
 
   
   return (
-      <div className="h-screen bg-white font-poppins text-black">
+      <div className="h-screen lg:h-auto bg-white font-poppins text-black">
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-6">            
             <div className="hidden lg:block lg:col-span-3 bg-light-green" data-aos="fade-right" data-aos-duration="1500">
@@ -106,7 +107,7 @@ export default function LoginPage() {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={passwordShown ? "text" : "password"} 
                   name="password"
                   className=" input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent"
                   value={values.password}
@@ -120,11 +121,12 @@ export default function LoginPage() {
                   )}
                 </div>
               </div>
-              <div className="my-4">
-                <input className="mr-2 leading-tight" type="checkbox" id="checkbox_id" />
-                <label className="text-sm" htmlFor="checkbox_id">
-                  Remember Me
-                </label>
+              <div className="my-4 cursor-pointer">
+                <input className="mr-2 leading-tight checkbox checkbox-sm checkbox-accent" type="checkbox" id="checkbox_id" 
+                onClick={() => setPasswordShown(prevState => !prevState)} />
+                <span className="text-sm" htmlFor="checkbox_id">
+                  Lihat Password
+                </span>
               </div>
               {/* submit */}
               <div>

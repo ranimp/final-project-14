@@ -50,6 +50,8 @@ import TDkategori from './admin/views/TDkategori';
 import TDtim from './admin/views/TDtim';
 import NotFound from './user/pages/404notfound';
 import Forbidden from './user/pages/403forbidden';
+import EditProfilPage from './user/pages/editProfil';
+import EditPasswordPage from './user/pages/editPassword';
 AOS.init();
 
 export default function UserRoutes() {
@@ -73,6 +75,8 @@ export default function UserRoutes() {
             <Route exact path="/kategori" component={KategoriPage} />
             <Route exact path="/jadwal-konsultasi" component={PenjadwalanPage} />
             <Route exact path="/psikolog" component={PsikologPage} />
+            <Route exact path="/edit-profil" component={EditProfilPage} />
+            <Route exact path="/ganti-password" component={EditPasswordPage} />
             <Route exact path="/profil" component={ProfilPage} />
             <Route exact path="/tentang" component={AboutPage} />
             <Route exact path="/daftar" component={DaftarPage} />
