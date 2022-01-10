@@ -14,6 +14,7 @@ export default function EditProfil() {
     date: "",
     password: "",
     confirmPassword: "",
+    gambar: "",
     member : "not member",
     role: "user"
   });
@@ -158,6 +159,15 @@ export default function EditProfil() {
         <div className="text-xs text-red-600">
           {errors.date && <p className="error">{errors.date}</p>}
         </div>
+      </div>
+
+      {/* gambar */}
+      <div className="mt-3">
+        <label className="label text-sm font-bold text-black block">Gambar</label>
+        <input className="input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent" type="file" id="file"
+        name="gambar"
+        value={values.gambar}
+        onChange={handleChange}/>
       </div>
 
       {/* submit */}
