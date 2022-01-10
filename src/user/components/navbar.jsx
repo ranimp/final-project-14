@@ -54,7 +54,7 @@ export default function Navbar() {
                       <Link to="/psikolog">Profil Psikolog</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/">Pendeteksi Masalah</Link>
+                      <Link to="/deteksi">Pendeteksi Masalah</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
                       <Link to="/artikel">Artikel</Link>
@@ -85,7 +85,7 @@ export default function Navbar() {
                       <Link to="/psikolog">Profil Psikolog</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/">Pendeteksi Masalah</Link>
+                      <Link to="/deteksi">Pendeteksi Masalah</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
                       <Link to="/artikel">Artikel</Link>
