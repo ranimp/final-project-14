@@ -120,9 +120,9 @@ export default function HomePage() {
                   <img className="w-14 lg:w-20 mx-auto mt-8" src={test} alt='tes' />
                   <div className="card-body font-poppins mx-auto">
                     <h3 className="card-title font-montserrat text-xs lg:text-sm -mt-8 -mb-4 capitalize text-center">test pendeteksi masalah</h3>
-                    <div className="card-actions justify-center">
+                    <Link to="/deteksi" className="card-actions justify-center">
                       <Button type='more2'>learn more</Button>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className="card justify-center text-black bg-light-green">

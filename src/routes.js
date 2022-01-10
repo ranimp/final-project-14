@@ -52,6 +52,7 @@ import NotFound from './user/pages/404notfound';
 import Forbidden from './user/pages/403forbidden';
 import EditProfilPage from './user/pages/editProfil';
 import EditPasswordPage from './user/pages/editPassword';
+import DeteksiPage from './user/pages/deteksi';
 AOS.init();
 
 export default function UserRoutes() {
@@ -71,6 +72,7 @@ export default function UserRoutes() {
             <Route exact path="/komunitas" component={KomunitasPage} />
             <Route exact path="/konsultasi" component={KonsultasiPage} />
             <Route exact path="/artikel" component={ArtikelPage} />
+            <Route exact path="/deteksi" component={DeteksiPage} />
             <Route exact path="/webinar" component={WebinarPage} />
             <Route exact path="/kategori" component={KategoriPage} />
             <Route exact path="/jadwal-konsultasi" component={PenjadwalanPage} />
