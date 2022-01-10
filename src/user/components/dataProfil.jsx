@@ -7,38 +7,32 @@ export default function ProfilData() {
       <div className="mb-8">
         <h1 className="text-dark-green text-xl lg:text-3xl capitalize font-montserrat font-bold">profil saya</h1>
       </div>
-      <div className="grid grid-cols-6 text-black">
-        <div className="col-span-3 lg:col-span-1 capitalize text-xs lg:text-base">
+      <div className="grid grid-cols-7 text-black">
+        <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Nama lengkap</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
           <p>: Nama lengkap</p>
         </div>
-        <div className="col-span-3 lg:col-span-1 capitalize text-xs lg:text-base">
+        <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Tanggal lahir</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
           <p>: Tanggal lahir</p>
         </div>
-        <div className="col-span-3 lg:col-span-1 capitalize text-xs lg:text-base">
-          <p>Pekerjaan</p>
-        </div>
-        <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
-          <p>: Pekerjaan</p>
-        </div>
-        <div className="col-span-3 lg:col-span-1 capitalize text-xs lg:text-base">
+        <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Nomor telepon</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
           <p>: Nomor telepon</p>
         </div>
-        <div className="col-span-3 lg:col-span-1 capitalize text-xs lg:text-base">
+        <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Email</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
           <p>: Email</p>
         </div>
-        <div className="col-span-3 lg:col-span-1 capitalize text-xs lg:text-base">
+        <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Email Orang Tua</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
