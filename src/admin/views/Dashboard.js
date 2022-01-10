@@ -32,7 +32,7 @@ export default function Dashboard() {
     <>
     {admin && <div>
       <Sidebar />
-      <div className="relative md:ml-64 bg-blueGray-100">
+      <div className="relative md:ml-64 bg-gray-300">
       <Navbar/>
       <HeaderStats/>
         <div className="flex flex-wrap mt-5">

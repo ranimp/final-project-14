@@ -7,9 +7,26 @@ import Navbar from '../components/Navbars/Navbar';
 import HeaderStats from '../components/Headers/HeaderStats';
 import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
-
+import { useParams, useHistory } from "react-router-dom";
 export default function KategoriMasalah() {
   const [kategori, setKategori] = useState([])
+  const [admin, setAdmin] = useState(false)
+  const history = useHistory()
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const logged = JSON.parse(loggedInUser);
+      const foundUser = logged.data.role
+      if (foundUser === 'admin') {
+        setAdmin(true);
+      } else if (foundUser === 'user') {
+        history.push('/403')
+      }
+    } else {
+      history.push('/login')
+    }
+  }, []);
 
 useEffect(() => {
   axios.get(`https://be-cureit.herokuapp.com/kategori`)
@@ -22,8 +39,9 @@ useEffect(() => {
 
 return (
   <>
+  {admin && <div>
   <Sidebar />
-  <div className="relative md:ml-64 bg-blueGray-100">
+  <div className="relative md:ml-64 bg-gray-300">
   <Navbar/>
   <HeaderStats/>
   <div className="sm :w-4/12 flex flex-col my-10 mx-10">
@@ -84,7 +102,7 @@ return (
                 <span className="hidden sm:block">
         <button
           type="button"
-          className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600"
+          className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600"
         >
           < span className="fas fa-edit -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
           Edit
@@ -133,6 +151,7 @@ return (
   </div>
   <Footer/>
     </div>
+    </div>}
   </>
 );
 }
