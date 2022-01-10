@@ -130,12 +130,12 @@ return (
                     {kategori.judul}
                     </span>
                   </td>
-                  <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                  <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {kategori.deskripsi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-1 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {kategori.gambar}
                       </p>
