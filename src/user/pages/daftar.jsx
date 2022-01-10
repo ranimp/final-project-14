@@ -20,6 +20,7 @@ export default function DaftarPage() {
   });
 
   const [errors, setErrors] = useState({});
+  const [passwordShown, setPasswordShown] = useState(false);
   const history = useHistory()
 
   const handleChange = (event) => {
@@ -197,7 +198,7 @@ export default function DaftarPage() {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={passwordShown ? "text" : "password"} 
                   name="password"
                   className=" input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent"
                   value={values.password}
@@ -217,7 +218,7 @@ export default function DaftarPage() {
                   Konfirmasi Password
                 </label>
                 <input
-                  type="password"
+                  type={passwordShown ? "text" : "password"} 
                   name="confirmPassword"
                   className=" input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent"
                   value={values.confirmPassword}
@@ -232,9 +233,10 @@ export default function DaftarPage() {
               </div>
 
               <div className="my-4 cursor-pointer">
-                <input className="mr-2 leading-tight checkbox checkbox-sm checkbox-accent" type="checkbox" id="checkbox_id" />
+                <input className="mr-2 leading-tight checkbox checkbox-sm checkbox-accent" type="checkbox" id="checkbox_id" 
+                onClick={() => setPasswordShown(prevState => !prevState)} />
                 <span className="text-sm" htmlFor="checkbox_id">
-                  Remember Me
+                  Lihat Password
                 </span>
               </div>
 
