@@ -2,7 +2,8 @@ import validation from "./validation";
 import Button from "./button";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import login from "../images/login.gif"
 
 export default function EditProfil() {
   const [values, setValues] = useState({
@@ -12,14 +13,12 @@ export default function EditProfil() {
     email: "",
     email_ortu: "",
     date: "",
-    password: "",
-    confirmPassword: "",
     gambar: "",
-    member : "not member",
-    role: "user"
+    member : ""
   });
 
   const [errors, setErrors] = useState({});
+  const [updated, setUpdated] = useState(false)
   const history = useHistory()
 
   const handleChange = (event) => {
@@ -31,6 +30,31 @@ export default function EditProfil() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    const loggedInUser = localStorage.getItem("credential")
+    const logged = JSON.parse(loggedInUser);
+    const {token, id, role, email, gender, name, no_hp, profpic, email_Ortu, birthdate, member} = logged.data
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    if (role === 'user') {
+      axios.patch(`https://be-cureit.herokuapp.com/update-user/${id}`, {
+        no_hp: values.phone || no_hp,
+        name: values.name || name,
+        gender: values.gender || gender,
+        email: values.email || email,
+        email_Ortu: values.email_ortu || email_Ortu,
+        birthdate: values.date || birthdate,
+        profpic: values.gambar || profpic,
+        member : values.member || member
+      }, config)
+      .then(response => {
+        console.log(response,"Sukses mengupdate")
+        history.push('/login')
+      })
+      .catch(err => console.log(err))
+    } else {
+      history.push('/403')
+    }
   }
 
   return (
@@ -162,25 +186,25 @@ export default function EditProfil() {
       </div>
 
       {/* gambar */}
-      <div className="mt-3">
-        <label className="label text-sm font-bold text-black block">Gambar</label>
+      <div className="my-3">
+        <label className="label text-sm font-bold text-black block">Foto Profil</label>
         <input className="input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent" type="file" id="file"
         name="gambar"
         value={values.gambar}
         onChange={handleChange}/>
       </div>
 
-      {/* submit */}
-      <div className="mt-3 lg:mt-5">
-        <Button
-          def="default"
-          type="buyNow"
-          onClick={handleFormSubmit}
-        >
-          Simpan
-        </Button>
-      </div>
-      
+      <a href="#my-modal" className="btn bg-dark-green hover:btn-accent border-0 w-full" >simpan</a> 
+      <div id="my-modal" className="modal">
+        <div className="modal-box bg-light-green">
+          <img src={login} className="mx-auto w-1/2 my-3"/>
+          <p className="text-black">Harap masuk kembali untuk menyimpan perubahan</p> 
+          <div className="modal-action">
+            <a href="#" className="btn btn-accent" onClick={handleFormSubmit}>Masuk</a> 
+            <a href="#" className="btn">Tutup</a> 
+          </div>
+        </div>
+      </div>   
     </form>
   </div>
   )

@@ -146,7 +146,7 @@ export default function NavbarLogin() {
                       <Link to="/edit-profil">edit profil</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/login" onClick={handleLogout}>logout</Link>
+                      <Link to="/login" onClick={handleLogout}>keluar</Link>
                     </li>
                   </ul>
                 </a>
@@ -155,7 +155,7 @@ export default function NavbarLogin() {
                 <Link
                   className="lg:px-3 flex items-center text-sm capitalize font-bold leading-snug text-white hover:opacity-75 py-2 lg:py-0" to="/login"             
                 >
-                <Button def="default" type="signUp" onClick={handleLogout}>logout</Button>
+                <Button def="default" type="signUp" onClick={handleLogout}>keluar</Button>
                 </Link>
               </li> 
             </ul>
