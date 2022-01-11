@@ -31,7 +31,7 @@ export default function ProfilPage() {
               <img src={user.profpic} className="rounded-full"/>
             </div>
             <div className="col-span-9 lg:col-span-10 flex items-center ml-2 lg:ml-8">
-              <h1 className="text-xl lg:text-3xl inline-block font-montserrat font-bold ml-4">Budi Santoso</h1>
+              <h1 className="text-xl lg:text-3xl inline-block font-montserrat font-bold ml-4">{user.name}</h1>
             </div>
           </div>
           <div className="grid grid-cols-12">
