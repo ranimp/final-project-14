@@ -17,11 +17,25 @@ export default function ProfilPage() {
     const loggedInUser = localStorage.getItem("credential");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
+      setUser(foundUser.data);
     } else {
       history.push('/login')
     }
   }, []);
+
+  // const [user, setUser] = useState()
+  // const history = useHistory()
+
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("credential");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     const dataUser = foundUser.data
+  //     setUser(dataUser);
+  //   } else {
+  //     history.push('/login')
+  //   }
+  // }, []);
 
   return (
     <div>
@@ -43,7 +57,7 @@ export default function ProfilPage() {
             </div>
             <div className="col-span-9 ml-2 lg:ml-5">
               <div className="mt-12 mb-4 lg:my-12">
-                <ProfilData />
+                <ProfilData name={user.name} birthdate={user.birthdate} email={user.email} email_ortu={user.email_Ortu} no_hp={user.no_hp}/>
               </div>
               <div>
                 <DataKonsultasi />

@@ -1,7 +1,4 @@
-import { Link } from "react-router-dom"
-import { edit } from "../icons"
-
-export default function ProfilData() {
+export default function ProfilData({name, email, email_ortu, birthdate, no_hp}) {
   return (
     <div className="bg-light-green font-poppins p-3 lg:p-12 rounded-lg">
       <div className="mb-8">
@@ -9,34 +6,34 @@ export default function ProfilData() {
       </div>
       <div className="grid grid-cols-7 text-black">
         <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
-          <p>Nama lengkap</p>
+          <p>Nama</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
-          <p>: Nama lengkap</p>
+          <p>: {name}</p>
         </div>
         <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Tanggal lahir</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
-          <p>: Tanggal lahir</p>
+          <p>: {birthdate.split('T').slice(0, 1).toString().split("-").reverse().join("-")}</p>
         </div>
         <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Nomor telepon</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
-          <p>: Nomor telepon</p>
+          <p>: {no_hp}</p>
         </div>
         <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Email</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
-          <p>: Email</p>
+          <p>: {email}</p>
         </div>
         <div className="col-span-3 lg:col-span-2 capitalize text-xs lg:text-base">
           <p>Email Orang Tua</p>
         </div>
         <div className="col-span-3 lg:col-span-5 text-xs lg:text-base">
-          <p>: Email Orang Tua</p>
+          <p>: {email_ortu}</p>
         </div>
       </div>
     </div>
