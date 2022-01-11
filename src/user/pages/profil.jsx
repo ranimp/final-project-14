@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Footer from "../components/footer";
-import Button from "../components/button";
 import { useHistory } from "react-router-dom";
 import ProfilData from "../components/dataProfil";
-import profil from "../images/profil.png"
 import DataKonsultasi from "../components/dataKonsultasi";
 import NavbarLogin from "../components/navbarlogin";
 import SidebarProfil from "../components/sidebarProfil";
@@ -22,20 +19,6 @@ export default function ProfilPage() {
       history.push('/login')
     }
   }, []);
-
-  // const [user, setUser] = useState()
-  // const history = useHistory()
-
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("credential");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     const dataUser = foundUser.data
-  //     setUser(dataUser);
-  //   } else {
-  //     history.push('/login')
-  //   }
-  // }, []);
 
   return (
     <div>
