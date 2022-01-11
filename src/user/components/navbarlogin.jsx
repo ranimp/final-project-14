@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../icons/logo.png';
-import ava from '../images/profil.png'
+// import ava from '../images/profil.png'
 import { Link } from "react-router-dom";
 import Button from './button';
 
@@ -8,9 +8,15 @@ export default function NavbarLogin() {
 	const [navbarOpen, setNavbarOpen] = useState(false)
   const [fiturOpen, setFiturOpen] = useState(false)
   const [profilOpen, setProfilOpen] = useState(false)
+
   const handleLogout = () => {
     localStorage.clear();
   };
+
+  const loggedInUser = localStorage.getItem("credential");
+  const foundUser = JSON.parse(loggedInUser);
+  const ava = foundUser.data.profpic
+
 	return (
 		<>
       <nav className="font-montserrat sticky top-0 inset-x-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow-md">
@@ -146,7 +152,7 @@ export default function NavbarLogin() {
                       <Link to="/edit-profil">edit profil</Link>
                     </li> 
                     <li className='hover:bg-light-green -mt-3'>
-                      <Link to="/login" onClick={handleLogout}>logout</Link>
+                      <Link to="/login" onClick={handleLogout}>keluar</Link>
                     </li>
                   </ul>
                 </a>
@@ -155,7 +161,7 @@ export default function NavbarLogin() {
                 <Link
                   className="lg:px-3 flex items-center text-sm capitalize font-bold leading-snug text-white hover:opacity-75 py-2 lg:py-0" to="/login"             
                 >
-                <Button def="default" type="signUp" onClick={handleLogout}>logout</Button>
+                <Button def="default" type="signUp" onClick={handleLogout}>keluar</Button>
                 </Link>
               </li> 
             </ul>

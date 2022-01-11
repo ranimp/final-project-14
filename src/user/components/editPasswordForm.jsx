@@ -3,6 +3,7 @@ import Button from "./button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import login from "../images/login.gif"
 
 export default function EditPassword() {
   const [values, setValues] = useState({
@@ -23,6 +24,24 @@ export default function EditPassword() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    const loggedInUser = localStorage.getItem("credential")
+    const logged = JSON.parse(loggedInUser);
+    const {token, id, role} = logged.data
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    if (role === 'user') {
+      axios.patch(`https://be-cureit.herokuapp.com/password-user/${id}`, {
+        password : values.password
+      }, config)
+      .then(response => {
+        console.log(response,"Sukses mengupdate")
+        history.push('/login')
+      })
+      .catch(err => console.log(err))
+    } else {
+      history.push('/403')
+    }
   }
 
   return (
@@ -50,7 +69,6 @@ export default function EditPassword() {
           onClick={() => setPasswordShown(prevState => !prevState)}
         />
         <label className="text-xs ml-2" for='pw'>Lihat password</label>
-        {/* <input type='checkbox' onclick={togglePassword}>Show Password</input> */}
         <div className="text-xs text-red-600	">
           {errors.password && (
             <p className="error">{errors.password}</p>
@@ -59,15 +77,17 @@ export default function EditPassword() {
       </div>
 
       {/* submit */}
-      <div className="mt-3 lg:mt-5">
-        <Button
-          def="default"
-          type="buyNow"
-          onClick={handleFormSubmit}
-        >
-          Simpan
-        </Button>
-      </div>
+      <a href="#my-modal" className="btn bg-dark-green hover:btn-accent border-0 w-full" >simpan</a> 
+      <div id="my-modal" className="modal">
+        <div className="modal-box bg-light-green">
+          <img src={login} className="mx-auto w-1/2 my-3"/>
+          <p className="text-black">Harap masuk kembali untuk menyimpan perubahan</p> 
+          <div className="modal-action">
+            <a href="#" className="btn btn-accent" onClick={handleFormSubmit}>Masuk</a> 
+            <a href="#" className="btn">Tutup</a> 
+          </div>
+        </div>
+      </div>  
       
     </form>
   </div>
