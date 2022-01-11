@@ -31,7 +31,7 @@ export default function EditPassword() {
       headers: { Authorization: `Bearer ${token}` }
     };
     if (role === 'user') {
-      axios.patch(`https://be-cureit.herokuapp.com/update-user/${id}`, {
+      axios.patch(`https://be-cureit.herokuapp.com/password-user/${id}`, {
         password : values.password
       }, config)
       .then(response => {
@@ -69,7 +69,6 @@ export default function EditPassword() {
           onClick={() => setPasswordShown(prevState => !prevState)}
         />
         <label className="text-xs ml-2" for='pw'>Lihat password</label>
-        {/* <input type='checkbox' onclick={togglePassword}>Show Password</input> */}
         <div className="text-xs text-red-600	">
           {errors.password && (
             <p className="error">{errors.password}</p>
