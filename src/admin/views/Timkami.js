@@ -107,13 +107,13 @@ setTim(fetch)
                   <tr>
                     <td>
                   <span className="hidden sm:block">
-          <button
+          <Link
             type="button"
-            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600"
+            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" to="/admin/editdatatim"
           >
             < span className="fas fa-edit -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
             Edit
-          </button>
+          </Link>
         </span>
                   </td>
                     <td>
