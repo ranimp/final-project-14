@@ -48,13 +48,12 @@ import TDtestimoni from './admin/views/TDtestimoni';
 import TDpengalaman from './admin/views/TDpengalaman';
 import TDkategori from './admin/views/TDkategori';
 import TDtim from './admin/views/TDtim';
-import NotFound from './user/pages/404notfound';
+import EDartikel from './admin/views/EDartikel';
 import Forbidden from './user/pages/403forbidden';
 import EditProfilPage from './user/pages/editProfil';
 import EditPasswordPage from './user/pages/editPassword';
 import DeteksiPage from './user/pages/deteksi';
 import EDuser from './admin/views/EDuser';
-import EDartikel from './admin/views/EDartikel';
 import EDpembayaran from './admin/views/EDpembayaran';
 import EDkontak from './admin/views/EDkontak';
 import EDjadwal from './admin/views/EDjadwal';
@@ -66,6 +65,8 @@ import EDtest from './admin/views/EDtest';
 import EDtestimoni from './admin/views/EDtestimoni';
 import EDtim from './admin/views/EDtim';
 import EDwebinar from './admin/views/EDwebinar';
+import NotFound from './user/pages/404notfound';
+
 AOS.init();
 
 export default function UserRoutes() {
@@ -96,7 +97,6 @@ export default function UserRoutes() {
             <Route exact path="/tentang" component={AboutPage} />
             <Route exact path="/daftar" component={DaftarPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/" component={HomePage} />
             <Route exact path="/admin" component={Dashboard} />
             <Route exact path="/admin/profiluser" component={ProfilUser} />
             <Route exact path="/admin/profilpsikolog" component={ProfilPsikolog} />
@@ -124,9 +124,8 @@ export default function UserRoutes() {
             <Route exact path="/admin/tambahdatapengalaman" component={TDpengalaman} />
             <Route exact path="/admin/tambahdatakategori" component={TDkategori} />
             <Route exact path="/admin/tambahdatatimkami" component={TDtim} />
-            <Route exact path="*" component={NotFound} />
-            <Route exact path="/admin/editdatauser" component={EDuser} />
             <Route exact path="/admin/editdataartikel" component={EDartikel} />
+            <Route exact path="/admin/editdatauser" component={EDuser} />
             <Route exact path="/admin/editdatapembayaran" component={EDpembayaran} />
             <Route exact path="/admin/editdatakontak" component={EDkontak} />
             <Route exact path="/admin/editdatajadwal" component={EDjadwal} />
@@ -138,6 +137,8 @@ export default function UserRoutes() {
             <Route exact path="/admin/editdatatestimoni" component={EDtestimoni} />
             <Route exact path="/admin/editdatatim" component={EDtim} />
             <Route exact path="/admin/editdatawebinar" component={EDwebinar} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="*" component={NotFound} />
           </Switch>
         </div>
       </BrowserRouter>
