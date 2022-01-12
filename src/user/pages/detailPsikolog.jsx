@@ -9,6 +9,7 @@ import NavbarLogin from "../components/navbarlogin";
 
 export default function DetailPsikologPage() {
   const [psikolog, setPsikolog] = useState([])
+  const [testi, setTesti] = useState([])
   const [user, setUser] = useState()
 
   useEffect(() => {
@@ -24,9 +25,13 @@ export default function DetailPsikologPage() {
     .then (res => {
       const fetch = res.data
       setPsikolog(fetch)
+      setTesti(fetch.testimoni)
+      // console.log(testi);
     })
   },[psikolog])
   let {id} = useParams()
+
+  // console.log(psikolog.testimoni);
 
   return (
     <div className="bg-white">
@@ -45,7 +50,7 @@ export default function DetailPsikologPage() {
             <div className="font-montserrat font-bold text-sm lg:text-base my-3">
             {psikolog.spesialis}
             </div>
-            <div className="font-poppins text-xs lg:text-sm">
+            <div className="font-poppins text-xs lg:text-sm mb-8">
             {psikolog.deskripsi}
             </div>
             <Link className="my-8" to='/konsultasi'>
@@ -55,23 +60,9 @@ export default function DetailPsikologPage() {
         </div>
         <div className="font-poppins text-sm lg:text-base text-center font-bold mt-5">Testimoni  Konsultasi Untuk {psikolog.name}</div>
         <div className='lg:mx-36 grid grid-cols-1 md:grid-cols-2 p-5 shadow-2xl rounded-xl'>
-          <CardTestimoniPsikolog />
-          <CardTestimoniPsikolog />
-          <CardTestimoniPsikolog />
-          <CardTestimoniPsikolog />
-        </div>
-        <div className="mx-auto flex justify-center my-16">
-          <div className="btn-group ">
-            <button className="btn btn-xs bg-white text-black border-dark-green">«</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">1</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green btn-active">2</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">3</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">4</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">...</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">9</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">10</button> 
-            <button className="btn btn-xs bg-white text-black border-dark-green">»</button>
-          </div>
+          {testi.slice(0,4).map((testi) => (
+            <CardTestimoniPsikolog img={testi.gambar} title={testi.patientname} desc={testi.deskripsi}/>
+          ))}
         </div>
       </div>
       <Footer />
