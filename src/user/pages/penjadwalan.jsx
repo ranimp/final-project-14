@@ -21,11 +21,19 @@ export default function PenjadwalanPage() {
   const [psikolog, setPsikolog] = useState([])
 
   useEffect(() => {
-    axios.get("https://be-cureit.herokuapp.com/psikolog")
-    .then (res => {
-      const fetch = res.data
-      setPsikolog(fetch)
-    })
+    const loggedInUser = localStorage.getItem("credential");
+    const logged = JSON.parse(loggedInUser);
+    const { token } = logged.data
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    if (logged.data.role == 'user') {
+      axios.get("https://be-cureit.herokuapp.com/list-psikolog/", config)
+      .then (res => {
+        const fetch = res.data
+        setPsikolog(fetch)
+        console.log(psikolog);
+    })}
   },[])
 
   useEffect(() => {
@@ -52,17 +60,33 @@ export default function PenjadwalanPage() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    listUser.forEach(user => {
-      if (user.email === values.email && user.password === values.password && user.email.length >= 1) {
-        setIsLogged(true)
-        localStorage.setItem("credential", JSON.stringify(user))
-        console.log("berhasil")
-      } else {
-        setIsFailed(true)
-        console.log("login gagal")
-      }
+    console.log(values);
+    const loggedInUser = localStorage.getItem("credential")
+    const logged = JSON.parse(loggedInUser);
+    const {token, id, role, email, gender, name, no_hp, email_Ortu} = logged.data
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    if (role === 'user') {
+      axios.post(`https://be-cureit.herokuapp.com/konsultasi/add-konsultasi`, {
+        no_hp: values.phone || no_hp,
+        name: id,
+        gender: values.gender || gender,
+        email: email,
+        email_Ortu: email_Ortu,
+        psikolog: values.psikolog,
+        date: values.date,
+        keluhan: values.message
+      }, config)
+      .then(response => {
+        console.log(response,"Sukses menjadwalkan")
+        history.push('/profil')
+      })
+      .catch(err => console.log(err.response.data.msg))
+    } else {
+      history.push('/403')
+    }
     setErrors(validation(values));
-    })
   }
   
   return (
@@ -108,9 +132,9 @@ export default function PenjadwalanPage() {
                   <label className="label text-sm font-bold text-black block">
                     Psikolog Pilihan
                   </label>
-                  <select name="psikolog" id="psikolog" className="w-full font-poppins text-sm">
+                  <select name="psikolog" id="psikolog" className="w-full font-poppins text-sm" onChange={handleChange} >
                     {psikolog.map((psikolog) => (
-                      <option value={values.psikolog} onChange={handleChange}>{psikolog.name}</option>
+                      <option value={psikolog._id} selected>{psikolog.name}</option>
                     ))}
                   </select>
                 </div>
@@ -125,7 +149,7 @@ export default function PenjadwalanPage() {
                       type="radio"
                       className="form-radio"
                       name="gender"
-                      value="Male"
+                      value="laki-laki"
                       onChange={handleChange}
                     />
                     <label className="ml-2 text-xs">Laki-laki</label>
@@ -135,7 +159,7 @@ export default function PenjadwalanPage() {
                       type="radio"
                       className="form-radio"
                       name="gender"
-                      value="Female"
+                      value="perempuan"
                       onChange={handleChange}
                     />
                     <label className="ml-2 text-xs">Perempuan</label>
@@ -146,7 +170,6 @@ export default function PenjadwalanPage() {
                     )}
                   </div>
                 </div>
-  
   
                 {/* phone number */}
                 <div className="mt-3">
@@ -198,14 +221,12 @@ export default function PenjadwalanPage() {
   
                 {/* submit */}
                 <div>
-                  {isFailed && (<div className="text-xs text-red-600 my-3">No Such Data</div>)}
                   <Button
                     def="default"
                     type="buyNow"
                     onClick={handleFormSubmit}
                   >
                     Kirim 
-                    { isLogged && (<Redirect to="/"/>) }
                   </Button>
                 </div>
               </form>
