@@ -28,6 +28,7 @@ export default function Artikel() {
       history.push('/login')
     }
   }, []);
+  
   useEffect(() => {
     axios.get(`https://be-cureit.herokuapp.com/artikel`)
     .then (res => {
