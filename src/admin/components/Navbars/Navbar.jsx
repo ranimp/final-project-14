@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
 	const [navbarOpen, setNavbarOpen] = useState(false)
+  const handleLogout = () => {
+    localStorage.clear();
+  };
 	return (
 		<>
-      <nav className="font-montserrat sticky top-0 inset-x-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow-md">
+      <nav className="hidden lg:block font-montserrat sticky top-0 inset-x-0 z-50 flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow-md">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 						<img src={logo} className="w-12" alt='logo'/>
@@ -27,10 +30,10 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-              <Link className="text-center mt-2">
+              <Link className="text-center mt-2 " to="/login"  >
                     <button
-                      className="bg-dark-green text-white active:bg-dark-green text-sm font-bold uppercase px-4 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
+                      className="bg-dark-green text-white active:bg-dark-green text-sm font-bold uppercase px-4 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 "
+                      type="button" onClick={handleLogout}
                     >
                       Keluar
                     </button>

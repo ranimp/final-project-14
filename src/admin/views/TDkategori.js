@@ -33,15 +33,15 @@ export default function TDkategori() {
         <form action="/" method="post">
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-gray-900" for="first_name">Judul</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name"/>
+                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"/>
             </div>
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-gray-900" for="last_name">Deskripsi</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name"/>
+                <input className="border py-2 px-3 text-black" type="text" name="last_name" id="last_name"/>
             </div>
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-gray-900" for="File">Gambar</label>
-                <input className="border py-2 px-3 text-grey-800" type="file" name="file" id="file"/>
+                <input className="border py-2 px-3 text-black" type="file" name="file" id="file"/>
             </div>
             
             <Link

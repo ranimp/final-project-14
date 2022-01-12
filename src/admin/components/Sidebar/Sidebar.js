@@ -7,6 +7,9 @@ import UserDropdown from "../Dropdowns/UserDropdown"
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
+  const handleLogout = () => {
+    localStorage.clear();
+  };
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-light-green flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -35,9 +38,9 @@ export default function Sidebar() {
             <Link className="text-center mt-2" to="/login">
                     <button
                       className="bg-dark-green text-white font-poppins active:bg-dark-green text-sm font-bold uppercase px-4 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
+                      type="button" onClick={handleLogout}
                     >
-                      Masuk
+                      Keluar
                     </button>
                   </Link>
             </li>

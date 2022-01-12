@@ -107,13 +107,14 @@ useEffect(() => {
                   <tr>
                     <td>
                   <span className="hidden sm:block">
-          <button
+          <Link
             type="button"
-            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600"
+            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" 
+            to="/admin/editdatapengalaman"
           >
             < span className="fas fa-edit -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
             Edit
-          </button>
+          </Link>
         </span>
                   </td>
                   <td>
@@ -132,22 +133,22 @@ useEffect(() => {
                     {testimoni._id}
                     </span>
                   </td>
-                  <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                  <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.judul}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.deskripsi}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="mx-2 line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.video}
                       </p>
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8" data-aos="fade-right" data-aos-duration="1000">
+                    <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
                       {testimoni.problema}
                       </p>
