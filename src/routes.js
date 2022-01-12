@@ -97,7 +97,6 @@ export default function UserRoutes() {
             <Route exact path="/tentang" component={AboutPage} />
             <Route exact path="/daftar" component={DaftarPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/" component={HomePage} />
             <Route exact path="/admin" component={Dashboard} />
             <Route exact path="/admin/profiluser" component={ProfilUser} />
             <Route exact path="/admin/profilpsikolog" component={ProfilPsikolog} />
@@ -138,6 +137,7 @@ export default function UserRoutes() {
             <Route exact path="/admin/editdatatestimoni" component={EDtestimoni} />
             <Route exact path="/admin/editdatatim" component={EDtim} />
             <Route exact path="/admin/editdatawebinar" component={EDwebinar} />
+            <Route exact path="/" component={HomePage} />
             <Route exact path="*" component={NotFound} />
           </Switch>
         </div>
