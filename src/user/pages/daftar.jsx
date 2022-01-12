@@ -36,19 +36,17 @@ export default function DaftarPage() {
       name: values.name,
       gender: values.gender,
       email: values.email,
-      email_ortu: values.email_ortu,
+      email_Ortu: values.email_ortu,
       no_hp: values.phone,
-      date: values.date,
+      birthdate: values.date,
       password: values.password,
-      confirmPassword: values.confirmPassword,
       member : values.member,
       role: values.role,
     })
     .then(response => {
-      console.log(response,"Sukses menambahkan")
       history.push("/login")
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err.response))
     setErrors(validation(values));
   }
   
