@@ -46,9 +46,6 @@ export default function PenjadwalanPage() {
     }
   }, []);
 
-  const [listUser, setListUser] = useState([])
-  const [isLogged, setIsLogged] = useState(false)
-  const [isFailed, setIsFailed] = useState(false)
   const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
