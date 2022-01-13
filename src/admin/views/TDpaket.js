@@ -6,9 +6,8 @@ import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import React from "react";
 import success from "../components/assets/img/success.gif";
-import Artikel from "./Artikel";
 
-export default function EDartikel() {
+export default function TDpaket() {
     const [admin, setAdmin] = useState(false)
     const history = useHistory()
     const [showModal, setShowModal] = React.useState(false);
@@ -29,15 +28,11 @@ export default function EDartikel() {
     }, []);
 
     const [values, setValues] = useState({
-      judul: "",
+      name: "",
       deskripsi: "",
-      gambar : ""
+      harga: "",
     });
-  
-    const [errors, setErrors] = useState({});
-    const [updated, setUpdated] = useState(false)
-    
-  
+
     const handleChange = (event) => {
       setValues({
         ...values,
@@ -49,19 +44,20 @@ export default function EDartikel() {
       event.preventDefault();
       const loggedInUser = localStorage.getItem("credential")
       const logged = JSON.parse(loggedInUser);
-      const {token, id, role} = logged.data
+      const foundUser = logged.data.role
+      const token = logged.data.token
       const config = {
         headers: { Authorization: `Bearer ${token}` }
       };
-      if (role === 'admin') {
-        axios.patch(`https://be-cureit.herokuapp.com/edit-artikel/${id}`, {
-          judul: values.judul || Artikel.judul,
-          deskripsi: values.deskripsi,
-          gambar: values.gambar
+      if (foundUser === 'admin') {
+        axios.post("https://be-cureit.herokuapp.com/paket/add-paket", {
+          name : values.name,
+          deskripsi : values.deskripsi,
+          harga : values.harga
         }, config)
         .then(response => {
-          console.log(response,"Sukses mengupdate")
-          history.push('/admin/artikel')
+          console.log(response,"Sukses menambahkan")
+          history.push("/admin/paket")
         })
         .catch(err => console.log(err))
       } else {
@@ -75,40 +71,37 @@ export default function EDartikel() {
     <Navbar/>
     <div className="flex justify-center items-center w-full bg-dark-green">
     <div className="w-1/2 bg-white rounded shadow-2xl p-8 m-4">
-        <h1 className=" block w-full text-center  text-dark-green capitalize text-2xl mb-6">Edit Data</h1>
-        <form action="/" method="patch">
+        <h1 className=" block w-full text-center  text-dark-green capitalize text-2xl mb-6">Tambah Data</h1>
+        <form action="/" method="post">
             <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Judul</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name"
-                value={values.judul}
-                onChange={handleChange}
-                />
-                 <div className="text-xs text-red-600">
-          {errors.judul && <p className="error">{errors.judul}</p>}
-        </div>
-            </div>
-            <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-black" for="last_name">Deskripsi</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name"
-                value={values.deskripsi}
-                onChange={handleChange}
-                />
-                 <div className="text-xs text-red-600">
-          {errors.deskripsi && <p className="error">{errors.deskripsi}</p>}
-        </div>
-            </div>
-            <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-black" for="File">Gambar</label>
-                <input className="border py-2 px-3 text-grey-800" type="file" name="file" id="file"
-                value={values.gambar}
+                <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Nama</label>
+                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"
+                name="name" 
+                value={values.name}
                 onChange={handleChange}
                 />
             </div>
-            
+            <div class="flex flex-col mb-4">
+                        <label className="text-left mb-2 font-bold text-lg text-black">Deskripsi</label>
+
+                        <textarea rows="5" name="message" id="message" class="w-full px-3 py-2 border text-black" required
+                        name="deskripsi" 
+                        value={values.deskripsi}
+                        onChange={handleChange}
+                        ></textarea>
+            </div>
+            <div className="flex flex-col mb-4">
+                <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Harga</label>
+                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"
+                name="harga" 
+                value={values.harga}
+                onChange={handleChange}
+                />
+            </div>
             <Link
             type="button"
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green" onClick={() => setShowModal(true)}>
-            Simpan Data
+            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green" onClick={() => setShowModal(true)} >
+            Tambah Data
           </Link>
           {showModal && (
             <>
