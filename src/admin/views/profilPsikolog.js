@@ -13,6 +13,7 @@ import axios from "axios";
 export default function ProfilPsikolog() {
   const [psikolog, setPsikolog] = useState([])
   const [admin, setAdmin] = useState(false)
+  const [testi, setTesti] = useState([])
   const history = useHistory()
 
   useEffect(() => {
@@ -35,8 +36,9 @@ export default function ProfilPsikolog() {
     .then (res => {
       const fetch = res.data
       setPsikolog(fetch)
+      setTesti(fetch.testimoni)
     })
-  },[])
+  },[psikolog])
   return (
     <>
     {admin && <div>
@@ -98,18 +100,7 @@ export default function ProfilPsikolog() {
                   >
                     Testimoni
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Kategori
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Gambar
-                  </th>
+                  
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -158,22 +149,14 @@ export default function ProfilPsikolog() {
                       {psikolog.deskripsi}
                       </p>
                     </td>
+                    {testi.map((testi)=>
+              (
                     <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
-                      {psikolog.testimoni}
-                      </p>
+                      {testi.testimoni}
+                      </p>   
                     </td>
-                    <td className="w-3/4 col-span-3 mt-8">
-                      <p className="line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
-                      {psikolog.kategori}
-                      </p>
-                    </td>
-                    <td className="w-3/4 col-span-3 mt-8">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {psikolog.gambar}
-                      </span>
-                    </td>
-                    
+                    ))}
                   </tr>
                   ) )}
               </tbody>

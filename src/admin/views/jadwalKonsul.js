@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
+
 export default function JadwalKonsultasi() {
+  const [konsultasi, setKonsultasi] = useState([])
   const [admin, setAdmin] = useState(false)
   const history = useHistory()
 
@@ -26,6 +29,14 @@ export default function JadwalKonsultasi() {
       history.push('/login')
     }
   }, []);
+
+  useEffect(() => {
+    axios.get(`https://be-cureit.herokuapp.com/konsultasi`)
+    .then (res => {
+    const fetch = res.data
+    setKonsultasi(fetch)
+    })
+    },[])
 
   return (
     <>
@@ -68,24 +79,55 @@ export default function JadwalKonsultasi() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Judul
+                    Nama
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Deskripsi
+                    Psikolog
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Gambar
+                    Gender
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    Tanggal Konsultasi
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    No_hp
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    Email
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    Email_ortu
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    Keluhan
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                
+              {konsultasi.map((konsultasi)=>
+              (
                   <tr>
                   <td>
                   <span className="hidden sm:block">
@@ -110,31 +152,47 @@ export default function JadwalKonsultasi() {
         </span>
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
+                    {konsultasi._id}
+                    </span>
+                  </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                        Muhammad Farhan Al Abror 
+                      {konsultasi.name}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                        Kecemasan
+                      {konsultasi.psikolog}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-black">
-                        Farhan telah 
+                      {konsultasi.gender}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="line-clamp-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-black">
-                        Kepribadiannya yang
+                      {konsultasi.date}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
-                        ini ceritanya
+                      {konsultasi.email}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
+                      {konsultasi.email_Ortu}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
+                      {konsultasi.keluhan}
                       </span>
                     </td>
                   </tr>
+                  ) )}
               </tbody>
             </table>
           </div>

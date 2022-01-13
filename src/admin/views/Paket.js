@@ -95,7 +95,7 @@ setPaket(fetch)
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-              {paket.map((webinar)=>
+              {paket.map((paket)=>
               (
                 
                   <tr>
