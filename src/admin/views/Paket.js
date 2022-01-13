@@ -7,11 +7,11 @@ import HeaderStats from '../components/Headers/HeaderStats';
 import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
 
-export default function JadwalKonsultasi() {
-  const [konsultasi, setKonsultasi] = useState([])
+export default function Paket() {
+  const [paket, setPaket] = useState([])
   const [admin, setAdmin] = useState(false)
   const history = useHistory()
 
@@ -31,13 +31,12 @@ export default function JadwalKonsultasi() {
   }, []);
 
   useEffect(() => {
-    axios.get(`https://be-cureit.herokuapp.com/konsultasi`)
-    .then (res => {
-    const fetch = res.data
-    setKonsultasi(fetch)
-    })
-    },[])
-
+axios.get(`https://be-cureit.herokuapp.com/paket`)
+.then (res => {
+const fetch = res.data
+setPaket(fetch)
+})
+},[])
   return (
     <>
     {admin && <div>
@@ -57,13 +56,13 @@ export default function JadwalKonsultasi() {
           <Link
             type="button"
             className="my-2 ml-2 inline-flex items-center px-2 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green"
-            to="/admin/tambahdatajadwal">
+            to="/admin/tambahdatapaket">
             < span className="fas fa-plus -ml-1 mr-2 h-5 w-4 text-white" aria-hidden="true" />
             Tambah Data
           </Link>
         </span>
                   </th>
-                  <th
+                <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
@@ -85,62 +84,33 @@ export default function JadwalKonsultasi() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Psikolog
+                    Deskripsi
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Gender
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Tanggal Konsultasi
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    No_hp
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Email_ortu
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Keluhan
+                    Harga
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-              {konsultasi.map((konsultasi)=>
+              {paket.map((paket)=>
               (
+                
                   <tr>
-                  <td>
+                    <td>
                   <span className="hidden sm:block">
           <Link
             type="button"
-            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" to="/admin/editdatajadwal"
+            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" to="/admin/editdatawebinar"
           >
             < span className="fas fa-edit -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
             Edit
           </Link>
         </span>
                   </td>
-                  <td>
+                    <td>
                   <span className="hidden sm:block">
           <button
             type="button"
@@ -153,46 +123,26 @@ export default function JadwalKonsultasi() {
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                     <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                    {konsultasi._id}
+                    {paket._id}
                     </span>
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {konsultasi.name}
+                      {paket.name}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {konsultasi.psikolog}
-                      </span>
+                    <td className="w-3/4 col-span-3 mt-8">
+                      <p className="mt-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {paket.deskripsi}
+                      </p>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-black">
-                      {konsultasi.gender}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="line-clamp-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-black">
-                      {konsultasi.date}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
-                      {konsultasi.email}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
-                      {konsultasi.email_Ortu}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
-                      {konsultasi.keluhan}
-                      </span>
+                    <td className="w-3/4 col-span-3 mt-8">
+                      <p className="mx-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {paket.harga}
+                      </p>
                     </td>
                   </tr>
-                  ) )}
+                   ) )}
               </tbody>
             </table>
           </div>

@@ -8,11 +8,13 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function Testimoni() {
+  const [testimoni, setTestimoni] = useState([])
   const [admin, setAdmin] = useState(false)
   const history = useHistory()
-
+  
   useEffect(() => {
     const loggedInUser = localStorage.getItem("credential");
     if (loggedInUser) {
@@ -28,6 +30,13 @@ export default function Testimoni() {
     }
   }, []);
 
+  useEffect(() => {
+    axios.get(`https://be-cureit.herokuapp.com/testimoni`)
+    .then (res => {
+      const fetch = res.data
+      setTestimoni(fetch)
+    })
+  },[])
   return (
     <>
     {admin && <div>
@@ -69,7 +78,7 @@ export default function Testimoni() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Judul
+                    Patientname
                   </th>
                   <th
                     scope="col"
@@ -83,10 +92,17 @@ export default function Testimoni() {
                   >
                     Gambar
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    Psikolog
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                
+              {testimoni.map((testimoni)=>
+              (
                   <tr>
                   <td>
                   <span className="hidden sm:block">
@@ -112,30 +128,31 @@ export default function Testimoni() {
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                        Muhammad Farhan Al Abror 
+                      {testimoni._id}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                        Kecemasan
+                      {testimoni.patientname}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-black">
-                        Farhan telah 
+                      {testimoni.deskripsi}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="line-clamp-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-black">
-                        Kepribadiannya yang
+                      {testimoni.gambar}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
-                        ini ceritanya
+                      {testimoni.psikolog}
                       </span>
                     </td>
                   </tr>
+                  ) )}
               </tbody>
             </table>
           </div>

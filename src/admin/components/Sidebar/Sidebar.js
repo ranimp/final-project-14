@@ -172,6 +172,10 @@ export default function Sidebar() {
                   Tim Kami
                 
               </Link>
+              <Link className="inline-flex text-gray-400 hover:text-dark-green text-sm block mb-4 no-underline font-semibold" to="/admin/paket">
+                  <i className="fas fa-chalkboard-teacher mr-2 text-blueGray-300 text-base"></i>
+                  Paket Konsultasi
+              </Link>
             </ul>
           </div>
         </div>

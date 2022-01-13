@@ -8,9 +8,9 @@ import Navbar from '../components/Navbars/Navbar';
 import HeaderStats from '../components/Headers/HeaderStats';
 import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
-
 export default function Artikel() {
     const [artikel, setArtikel] = useState([])
+    const [showModal, setShowModal] = React.useState(false);
     const [admin, setAdmin] = useState(false)
   const history = useHistory()
 
@@ -36,6 +36,32 @@ export default function Artikel() {
       setArtikel(fetch)
     })
   },[])
+
+  const getArtikel = () => {
+    axios.get(`https://be-cureit.herokuapp.com/artikel`)
+    .then (res => {
+      const fetch = res.data
+      setArtikel(fetch)
+    })
+  }
+  
+  const handleDelete =(id) => {
+    const loggedInUser = localStorage.getItem("credential")
+    const logged = JSON.parse(loggedInUser);
+    const {token,role} = logged.data
+    const config = {
+    headers: { Authorization: `Bearer ${token}` }
+    };
+    if (role === 'admin') {
+      axios.delete(`https://be-cureit.herokuapp.com/artikel/delete-artikel/${id}`, config)
+      .then( ()=> {
+        getArtikel()
+        console.log("kehapus")
+      })
+      .catch(error => console.log(error))
+    }else {
+      history.push('/403')
+    }}
 
   
   return (
@@ -115,10 +141,13 @@ export default function Artikel() {
           <button
             type="button"
             className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-red-500"
+            // onClick={() => setShowModal(true)}
+            onClick={() => handleDelete(artikel.id)}
           >
             < span className="fas fa-trash-alt -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
             Hapus
           </button>
+          
         </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -146,6 +175,43 @@ export default function Artikel() {
                   )}
               </tbody>
             </table>
+            {showModal && (
+            <>
+            <div
+                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            >
+                <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                {/*content*/}
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    {/*header*/}
+                    <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                    <h5 className="mx-auto text-dark-green text-xl font-poppins font-bold">
+                    Apa anda yakin ingin menghapus data?
+                    </h5>
+                    </div>
+                    {/*body*/}
+                    <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                    <button
+                        className="text-black bg-white border-2 rounded-lg font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                    >
+                        Tidak
+                    </button>
+                        <button
+                        className="text-white bg-red-500 rounded-lg font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        // onClick={handleFormSubmit}
+                    >
+                        Ya
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            </>
+        )}
           </div>
         </div>
       </div>

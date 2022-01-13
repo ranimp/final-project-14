@@ -65,6 +65,8 @@ import EDtest from './admin/views/EDtest';
 import EDtestimoni from './admin/views/EDtestimoni';
 import EDtim from './admin/views/EDtim';
 import EDwebinar from './admin/views/EDwebinar';
+import Paket from './admin/views/Paket';
+import TDpaket from './admin/views/TDpaket';
 import NotFound from './user/pages/404notfound';
 import HasilDeteksi from './user/pages/hasilDeteksi';
 
@@ -103,6 +105,7 @@ export default function UserRoutes() {
             <Route exact path="/admin/profiluser" component={ProfilUser} />
             <Route exact path="/admin/profilpsikolog" component={ProfilPsikolog} />
             <Route exact path="/admin/artikel" component={Artikel} />
+            <Route exact path="/admin/paket" component={Paket} />
             <Route exact path="/admin/webinar" component={Webinar} />
             <Route exact path="/admin/komunitas" component={Komunitas} />
             <Route exact path="/admin/test" component={TestPendeteksiMasalah} />
@@ -126,6 +129,7 @@ export default function UserRoutes() {
             <Route exact path="/admin/tambahdatapengalaman" component={TDpengalaman} />
             <Route exact path="/admin/tambahdatakategori" component={TDkategori} />
             <Route exact path="/admin/tambahdatatimkami" component={TDtim} />
+            <Route exact path="/admin/tambahdatapaket" component={TDpaket} />
             <Route exact path="/admin/editdataartikel" component={EDartikel} />
             <Route exact path="/admin/editdatauser" component={EDuser} />
             <Route exact path="/admin/editdatapembayaran" component={EDpembayaran} />
