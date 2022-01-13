@@ -102,6 +102,12 @@ export default function ProfilPsikolog() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
+                    Kategori
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
                     Gambar
                   </th>
                 </tr>
@@ -139,7 +145,7 @@ export default function ProfilPsikolog() {
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {psikolog.nama}
+                      {psikolog.name}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -155,6 +161,11 @@ export default function ProfilPsikolog() {
                     <td className="w-3/4 col-span-3 mt-8">
                       <p className="line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
                       {psikolog.testimoni}
+                      </p>
+                    </td>
+                    <td className="w-3/4 col-span-3 mt-8">
+                      <p className="line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {psikolog.kategori}
                       </p>
                     </td>
                     <td className="w-3/4 col-span-3 mt-8">

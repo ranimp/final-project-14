@@ -1,17 +1,18 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useHistory } from "react-router-dom";
+
 // components
 import Sidebar from '../components/Sidebar/Sidebar';
 import Navbar from '../components/Navbars/Navbar';
 import HeaderStats from '../components/Headers/HeaderStats';
 import { Link } from "react-router-dom";
 import Footer from "../components/Footers/Footer";
-export default function Artikel() {
-    const [artikel, setArtikel] = useState([])
-    const [showModal, setShowModal] = React.useState(false);
-    const [admin, setAdmin] = useState(false)
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
+
+export default function Paket() {
+  const [paket, setPaket] = useState([])
+  const [admin, setAdmin] = useState(false)
   const history = useHistory()
 
   useEffect(() => {
@@ -28,16 +29,14 @@ export default function Artikel() {
       history.push('/login')
     }
   }, []);
-  
-  useEffect(() => {
-    axios.get(`https://be-cureit.herokuapp.com/artikel`)
-    .then (res => {
-      const fetch = res.data
-      setArtikel(fetch)
-    })
-  },[])
 
-  
+  useEffect(() => {
+axios.get(`https://be-cureit.herokuapp.com/paket`)
+.then (res => {
+const fetch = res.data
+setPaket(fetch)
+})
+},[])
   return (
     <>
     {admin && <div>
@@ -57,13 +56,13 @@ export default function Artikel() {
           <Link
             type="button"
             className="my-2 ml-2 inline-flex items-center px-2 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green"
-            to="/admin/tambahdataartikel">
+            to="/admin/tambahdatawebinar">
             < span className="fas fa-plus -ml-1 mr-2 h-5 w-4 text-white" aria-hidden="true" />
             Tambah Data
           </Link>
         </span>
                   </th>
-                  <th
+                <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
@@ -79,7 +78,7 @@ export default function Artikel() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Judul
+                    Nama
                   </th>
                   <th
                     scope="col"
@@ -91,100 +90,61 @@ export default function Artikel() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Gambar
+                    Harga
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {artikel.map((artikel)=>
-                (
+              {paket.map((webinar)=>
+              (
+                
                   <tr>
                     <td>
                   <span className="hidden sm:block">
           <Link
             type="button"
-            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" to="/admin/editdataartikel"
+            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" to="/admin/editdatawebinar"
           >
-            < span className="fas fa-edit  mr-2 h-5 w-5 text-white" aria-hidden="true" />
+            < span className="fas fa-edit -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
             Edit
           </Link>
         </span>
                   </td>
-                  <td>
+                    <td>
                   <span className="hidden sm:block">
-          <Link
+          <button
             type="button"
             className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-red-500"
-            onClick={() => setShowModal(true)}
           >
             < span className="fas fa-trash-alt -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
             Hapus
-          </Link>
-          
+          </button>
         </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {artikel._id}
-                      </span>
-                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
+                    {paket._id}
+                    </span>
+                  </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {artikel.judul}
+                      {paket.name}
                       </span>
                     </td>
                     <td className="w-3/4 col-span-3 mt-8">
-                      <p className="line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
-                      {artikel.deskripsi}
+                      <p className="mt-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {paket.deskripsi}
                       </p>
                     </td>
                     <td className="w-3/4 col-span-3 mt-8">
-                      <p className="mx-2 line-clamp-3 my-2 text-black text-xs whitespace-pre-line align-bottom">
-                      {artikel.gambar}
+                      <p className="mx-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {paket.harga}
                       </p>
                     </td>
                   </tr>
-                  )
-                  )}
+                   ) )}
               </tbody>
             </table>
-            {showModal && (
-            <>
-            <div
-                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-            >
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                {/*content*/}
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    {/*header*/}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                    <h5 className="mx-auto text-dark-green text-xl font-poppins font-bold">
-                    Apa anda yakin ingin menghapus data?
-                    </h5>
-                    </div>
-                    {/*body*/}
-                    <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                    <button
-                        className="text-black bg-white border-2 rounded-lg font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                        onClick={() => setShowModal(false)}
-                    >
-                        Tidak
-                    </button>
-                        <button
-                        className="text-white bg-red-500 rounded-lg font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                        onClick={() => setShowModal(false)}
-                    >
-                        Ya
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-            </>
-        )}
           </div>
         </div>
       </div>

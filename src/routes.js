@@ -65,6 +65,7 @@ import EDtest from './admin/views/EDtest';
 import EDtestimoni from './admin/views/EDtestimoni';
 import EDtim from './admin/views/EDtim';
 import EDwebinar from './admin/views/EDwebinar';
+import Paket from './admin/views/Paket';
 import NotFound from './user/pages/404notfound';
 
 AOS.init();
@@ -101,6 +102,7 @@ export default function UserRoutes() {
             <Route exact path="/admin/profiluser" component={ProfilUser} />
             <Route exact path="/admin/profilpsikolog" component={ProfilPsikolog} />
             <Route exact path="/admin/artikel" component={Artikel} />
+            <Route exact path="/admin/paket" component={Paket} />
             <Route exact path="/admin/webinar" component={Webinar} />
             <Route exact path="/admin/komunitas" component={Komunitas} />
             <Route exact path="/admin/test" component={TestPendeteksiMasalah} />
