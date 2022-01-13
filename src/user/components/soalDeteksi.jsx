@@ -1,18 +1,18 @@
-export default function SoalDeteksi({name}) {
+export default function SoalDeteksi({name, soal, onChange}) {
   return (   
     <div className="card lg:card-side bg-light-green text-black mb-5">
       <div className="card-body">
-        <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p> 
+        <p>{soal}</p> 
         <div className="card-actions justify-center">
           <div className="form-control">
             <label className="cursor-pointer label">
-              tidak pernah
-              <input type="radio" name={name} className="radio radio-accent mx-4" value="1"/>
-              <input type="radio" name={name} className="radio radio-accent mr-4" value="2"/>
-              <input type="radio" name={name} className="radio radio-accent mr-4" value="3"/>
-              <input type="radio" name={name} className="radio radio-accent mr-4" value="4"/>
-              <input type="radio" name={name} className="radio radio-accent mr-4" value="5"/>
-              selalu
+              <span className="text-xs lg:text-sm mr-2 lg:mr-4">tidak pernah</span>
+              <input type="radio" name={name} className="radio radio-xs lg:radio-md radio-accent mr-2 lg:mr-4" value="1" onChange={onChange}/>
+              <input type="radio" name={name} className="radio radio-xs lg:radio-md radio-accent mr-2 lg:mr-4" value="2" onChange={onChange}/>
+              <input type="radio" name={name} className="radio radio-xs lg:radio-md radio-accent mr-2 lg:mr-4" value="3" onChange={onChange}/>
+              <input type="radio" name={name} className="radio radio-xs lg:radio-md radio-accent mr-2 lg:mr-4" value="4" onChange={onChange}/>
+              <input type="radio" name={name} className="radio radio-xs lg:radio-md radio-accent mr-2 lg:mr-4" value="5" onChange={onChange}/>
+              <span className="text-xs lg:text-sm">selalu</span>
             </label>
           </div> 
         </div>
