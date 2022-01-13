@@ -66,6 +66,7 @@ import EDtestimoni from './admin/views/EDtestimoni';
 import EDtim from './admin/views/EDtim';
 import EDwebinar from './admin/views/EDwebinar';
 import NotFound from './user/pages/404notfound';
+import HasilDeteksi from './user/pages/hasilDeteksi';
 
 AOS.init();
 
@@ -76,6 +77,7 @@ export default function UserRoutes() {
         <div className="App">
           <Switch>
             <Route exact path="/403" component={Forbidden} />
+            <Route exact path="/hasil-deteksi" component={HasilDeteksi} />
             <Route exact path="/testimoni/:id" component={DetailTestimoniPage} />
             <Route exact path="/komunitas/:id" component={DetailKomunitasPage} />
             <Route exact path="/kategori/:id" component={DetailKategoriPage} />
