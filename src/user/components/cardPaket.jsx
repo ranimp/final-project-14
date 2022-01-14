@@ -1,4 +1,5 @@
-import Button from "./button";
+import payment from "../images/credit.png"
+import { Link } from "react-router-dom";
 
 export default function CardPaket ({name, desc, price}) {
   return (
@@ -9,10 +10,22 @@ export default function CardPaket ({name, desc, price}) {
           <div className="mb-2 text-sm whitespace-pre-line align-bottom h-16">
             {desc}
           </div>
-          <div className="justify-center card-actions capitalize">
+          <div className="justify-center card-actions">
             <p className="text-center text-sm">Rp {
                     new Intl.NumberFormat(['ban', 'id']).format(Number(price))}</p>
-            <Button type='buyNow'>beli sekarang</Button>
+            <a href="#my-modal" className="btn bg-dark-green hover:btn-accent border-0 w-full" >beli sekarang</a> 
+            <div id="my-modal" className="modal">
+              <div className="modal-box bg-light-green">
+                <img src={payment} className="mx-auto w-1/2 my-3"/>
+                <p className="text-black">Yakin pilih paket ini?</p> 
+                <div className="modal-action">
+                  <Link to="/payment">
+                    <a href="#" className="btn btn-accent">Ya</a> 
+                  </Link>
+                  <a href="#" className="btn">Tidak</a> 
+                </div>
+              </div>
+            </div> 
           </div>
         </div>
       </div>
