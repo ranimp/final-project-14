@@ -22,7 +22,7 @@ export default function CardPaket ({name, desc, price}) {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
       }
     if(user) {
-      const responseServer = await fetch('http://localhost:3000/payment', {
+      const responseServer = await fetch('https://be-cureit.herokuapp.com/payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
