@@ -1,7 +1,50 @@
 import payment from "../images/credit.png"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function CardPaket ({name, desc, price}) {
+  const [user, setUser] = useState()
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("credential");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser.data);
+    }
+  }, []);
+
+  const history = useHistory()
+  const handleCheckout = async () => {
+    console.log(price);
+    const chars ='abcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      for ( let i = 0; i < 20; i++ ) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+    const responseServer = await fetch('https://be-cureit.herokuapp.com/payment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "order_id": `Cureit-${result}`,
+        "gross_amount": `300000`,
+        "name": `${user.name}`,
+        "email": `${user.email}`,
+        "phone": `${user.phone}`
+      }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data)
+      return data
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+    console.log(responseServer)
+    window.open(responseServer.transaction.redirect_url)
+    history.push("/payment")
+  };
   return (
     <>
       <div className="card shadow-2xl my-2">
@@ -20,7 +63,7 @@ export default function CardPaket ({name, desc, price}) {
                 <p className="text-black">Yakin pilih paket ini?</p> 
                 <div className="modal-action">
                   <Link to="/payment">
-                    <a href="#" className="btn btn-accent">Ya</a> 
+                    <a href="#" className="btn btn-accent" onClick={handleCheckout}>Ya</a> 
                   </Link>
                   <a href="#" className="btn">Tidak</a> 
                 </div>
