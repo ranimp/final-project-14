@@ -37,32 +37,6 @@ export default function Artikel() {
     })
   },[])
 
-  const getArtikel = () => {
-    axios.get(`https://be-cureit.herokuapp.com/artikel`)
-    .then (res => {
-      const fetch = res.data
-      setArtikel(fetch)
-    })
-  }
-  
-  const handleDelete =(id) => {
-    const loggedInUser = localStorage.getItem("credential")
-    const logged = JSON.parse(loggedInUser);
-    const {token,role} = logged.data
-    const config = {
-    headers: { Authorization: `Bearer ${token}` }
-    };
-    if (role === 'admin') {
-      axios.delete(`https://be-cureit.herokuapp.com/artikel/delete-artikel/${id}`, config)
-      .then( ()=> {
-        getArtikel()
-        console.log("kehapus")
-      })
-      .catch(error => console.log(error))
-    }else {
-      history.push('/403')
-    }}
-
   
   return (
     <>
@@ -88,12 +62,6 @@ export default function Artikel() {
             Tambah Data
           </Link>
         </span>
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Aksi
                   </th>
                 <th
                     scope="col"
@@ -125,30 +93,10 @@ export default function Artikel() {
                 {artikel.map((artikel)=>
                 (
                   <tr>
-                    <td>
-                  <span className="hidden sm:block">
-          <Link
-            type="button"
-            className="ml-2 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-blue-600" to="/admin/editdataartikel"
-          >
-            < span className="fas fa-edit  mr-2 h-5 w-5 text-white" aria-hidden="true" />
-            Edit
-          </Link>
-        </span>
-                  </td>
-                  <td>
-                  <span className="hidden sm:block">
-          <button
-            type="button"
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-red-500"
-            // onClick={() => setShowModal(true)}
-            onClick={() => handleDelete(artikel.id)}
-          >
-            < span className="fas fa-trash-alt -ml-1 mr-2 h-5 w-5 text-white" aria-hidden="true" />
-            Hapus
-          </button>
-          
-        </span>
+                   <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
+                    
+                    </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">

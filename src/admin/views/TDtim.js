@@ -101,12 +101,11 @@ export default function TDtim() {
                 />
             </div>
             <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Gambar</label>
-                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"
-                name="gambar" 
+                <label className="text-left mb-2 font-bold text-lg text-gray-900" for="first_name">Gambar</label>
+                <input className="border py-2 px-3 text-black" type="text" id="first_name"
+                name="judul" 
                 value={values.gambar}
-                onChange={handleChange}
-                />
+                onChange={handleChange}/>
             </div>
             <Link
             type="button"

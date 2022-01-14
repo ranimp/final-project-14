@@ -43,28 +43,15 @@ import TDartikel from './admin/views/TDartikel';
 import TDtest from './admin/views/TDtest';
 import TDjadwal from './admin/views/TDjadwal';
 import TDpembayaran from './admin/views/TDpembayaran';
-import TDkontak from './admin/views/TDkontak';
+
 import TDtestimoni from './admin/views/TDtestimoni';
 import TDpengalaman from './admin/views/TDpengalaman';
 import TDkategori from './admin/views/TDkategori';
 import TDtim from './admin/views/TDtim';
-import EDartikel from './admin/views/EDartikel';
 import Forbidden from './user/pages/403forbidden';
 import EditProfilPage from './user/pages/editProfil';
 import EditPasswordPage from './user/pages/editPassword';
 import DeteksiPage from './user/pages/deteksi';
-import EDuser from './admin/views/EDuser';
-import EDpembayaran from './admin/views/EDpembayaran';
-import EDkontak from './admin/views/EDkontak';
-import EDjadwal from './admin/views/EDjadwal';
-import EDkategori from './admin/views/EDkategori';
-import EDkomunitas from './admin/views/EDkomunitas';
-import EDpengalaman from './admin/views/EDpengalaman';
-import EDpsikolog from './admin/views/EDpsikolog';
-import EDtest from './admin/views/EDtest';
-import EDtestimoni from './admin/views/EDtestimoni';
-import EDtim from './admin/views/EDtim';
-import EDwebinar from './admin/views/EDwebinar';
 import Paket from './admin/views/Paket';
 import TDpaket from './admin/views/TDpaket';
 import NotFound from './user/pages/404notfound';
@@ -124,25 +111,12 @@ export default function UserRoutes() {
             <Route exact path="/admin/tambahdatatest" component={TDtest} />
             <Route exact path="/admin/tambahdatajadwal" component={TDjadwal} />
             <Route exact path="/admin/tambahdatapembayaran" component={TDpembayaran} />
-            <Route exact path="/admin/tambahdatakontakkami" component={TDkontak} />
+
             <Route exact path="/admin/tambahdatatestimoni" component={TDtestimoni} />
             <Route exact path="/admin/tambahdatapengalaman" component={TDpengalaman} />
             <Route exact path="/admin/tambahdatakategori" component={TDkategori} />
             <Route exact path="/admin/tambahdatatimkami" component={TDtim} />
             <Route exact path="/admin/tambahdatapaket" component={TDpaket} />
-            <Route exact path="/admin/editdataartikel" component={EDartikel} />
-            <Route exact path="/admin/editdatauser" component={EDuser} />
-            <Route exact path="/admin/editdatapembayaran" component={EDpembayaran} />
-            <Route exact path="/admin/editdatakontak" component={EDkontak} />
-            <Route exact path="/admin/editdatajadwal" component={EDjadwal} />
-            <Route exact path="/admin/editdatakategori" component={EDkategori} />
-            <Route exact path="/admin/editdatakomunitas" component={EDkomunitas} />
-            <Route exact path="/admin/editdatapengalaman" component={EDpengalaman} />
-            <Route exact path="/admin/editdatapsikolog" component={EDpsikolog} />
-            <Route exact path="/admin/editdatatest" component={EDtest} />
-            <Route exact path="/admin/editdatatestimoni" component={EDtestimoni} />
-            <Route exact path="/admin/editdatatim" component={EDtim} />
-            <Route exact path="/admin/editdatawebinar" component={EDwebinar} />
             <Route exact path="/" component={HomePage} />
             <Route exact path="*" component={NotFound} />
           </Switch>
