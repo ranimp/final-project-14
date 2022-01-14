@@ -3,10 +3,14 @@ import Navbar from '../components/Navbars/Navbar';
 import Footer from "../components/Footers/Footer";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
+import React from "react";
+import success from "../components/assets/img/success.gif";
 
 export default function TDtim() {
     const [admin, setAdmin] = useState(false)
     const history = useHistory()
+    const [showModal, setShowModal] = React.useState(false);
   
     useEffect(() => {
       const loggedInUser = localStorage.getItem("credential");
@@ -23,6 +27,45 @@ export default function TDtim() {
       }
     }, []);
 
+    const [values, setValues] = useState({
+      nama: "",
+      deskripsi: "",
+      posisi: "",
+      gambar: "",
+    });
+
+    const handleChange = (event) => {
+      setValues({
+        ...values,
+        [event.target.name]: event.target.value,
+      });
+    };
+  
+    const handleFormSubmit = (event) => {
+      event.preventDefault();
+      const loggedInUser = localStorage.getItem("credential")
+      const logged = JSON.parse(loggedInUser);
+      const foundUser = logged.data.role
+      const token = logged.data.token
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      };
+      if (foundUser === 'admin') {
+        axios.post("https://be-cureit.herokuapp.com/tim/add-tim", {
+          nama : values.nama,
+          deskripsi : values.deskripsi,
+          posisi : values.posisi,
+          gambar: values.gambar
+        }, config)
+        .then(response => {
+          console.log(response,"Sukses menambahkan")
+          history.push("/admin/timkami")
+        })
+        .catch(err => console.log(err))
+      } else {
+        history.push('/403')
+      }
+    }
 
     return(
 <>
@@ -34,26 +77,82 @@ export default function TDtim() {
         <form action="/" method="post">
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Nama</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name"/>
+                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"
+                name="nama" 
+                value={values.nama}
+                onChange={handleChange}
+                />
             </div>
             <div class="flex flex-col mb-4">
                         <label className="text-left mb-2 font-bold text-lg text-black">Deskripsi</label>
 
-                        <textarea rows="5" name="message" id="message" class="w-full px-3 py-2 border text-grey-800" required></textarea>
+                        <textarea rows="5" name="message" id="message" class="w-full px-3 py-2 border text-black" required
+                        name="deskripsi" 
+                        value={values.deskripsi}
+                        onChange={handleChange}
+                        ></textarea>
             </div>
             <div className="flex flex-col mb-4">
                 <label className="text-left mb-2 font-bold text-lg text-black" for="first_name">Posisi</label>
-                <input className="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name"/>
+                <input className="border py-2 px-3 text-black" type="text" name="first_name" id="first_name"
+                name="posisi" 
+                value={values.posisi}
+                onChange={handleChange}
+                />
             </div>
             <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-black" for="File">Gambar</label>
-                <input className="border py-2 px-3 text-grey-800" type="file" name="file" id="file"/>
+                <label className="text-left mb-2 font-bold text-lg text-gray-900" for="first_name">Gambar</label>
+                <input className="border py-2 px-3 text-black" type="text" id="first_name"
+                name="judul" 
+                value={values.gambar}
+                onChange={handleChange}/>
             </div>
             <Link
             type="button"
-            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green">
+            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green" onClick={() => setShowModal(true)} >
             Tambah Data
           </Link>
+          {showModal && (
+            <>
+            <div
+                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            >
+                <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                {/*content*/}
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    {/*header*/}
+                    <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                    <h5 className="ml-10 text-dark-green text-xl font-normal">
+                    Data berhasil ditambahkan!
+                    </h5>
+                    <button
+                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                        onClick={() => setShowModal(false)}
+                    >
+                        <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                        ×
+                        </span>
+                    </button>
+                    </div>
+                    {/*body*/}
+                    <div className="relative p-6 flex-auto">
+                    <img className="mx-auto w-48"src={success} alt="success"></img>
+                    </div>
+                    <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                        <button
+                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={handleFormSubmit}
+                    >
+                        Tutup
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            </>
+        )}
         </form>
     </div>
 </div>

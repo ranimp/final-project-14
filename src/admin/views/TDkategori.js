@@ -40,8 +40,8 @@ export default function TDkategori() {
                 <input className="border py-2 px-3 text-black" type="text" name="last_name" id="last_name"/>
             </div>
             <div className="flex flex-col mb-4">
-                <label className="text-left mb-2 font-bold text-lg text-gray-900" for="File">Gambar</label>
-                <input className="border py-2 px-3 text-black" type="file" name="file" id="file"/>
+                <label className="text-left mb-2 font-bold text-lg text-gray-900" for="first_name">Gambar</label>
+                <input className="border py-2 px-3 text-black" type="text" id="first_name"/>
             </div>
             
             <Link

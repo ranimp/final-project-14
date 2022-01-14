@@ -10,8 +10,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
-export default function ProfilUser() {
-  const [user, setUser] = useState([])
+export default function Paket() {
+  const [paket, setPaket] = useState([])
   const [admin, setAdmin] = useState(false)
   const history = useHistory()
 
@@ -31,12 +31,12 @@ export default function ProfilUser() {
   }, []);
 
   useEffect(() => {
-    axios.get(`https://be-cureit.herokuapp.com/user`)
-    .then (res => {
-      const fetch = res.data
-      setUser(fetch)
-    })
-  },[])
+axios.get(`https://be-cureit.herokuapp.com/paket`)
+.then (res => {
+const fetch = res.data
+setPaket(fetch)
+})
+},[])
   return (
     <>
     {admin && <div>
@@ -56,13 +56,18 @@ export default function ProfilUser() {
           <Link
             type="button"
             className="my-2 ml-2 inline-flex items-center px-2 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-dark-green"
-            to="/admin/tambahdatauser">
+            to="/admin/tambahdatapaket">
             < span className="fas fa-plus -ml-1 mr-2 h-5 w-4 text-white" aria-hidden="true" />
             Tambah Data
           </Link>
         </span>
                   </th>
-                  
+                <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
+                  >
+                    ID
+                  </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
@@ -73,78 +78,48 @@ export default function ProfilUser() {
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    Email
+                    Deskripsi
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
                   >
-                    no_hp
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Password
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Gender
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-center text-xs font-medium text-dark-green uppercase tracking-wider"
-                  >
-                    Role
+                    Harga
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-              {user.map((user)=>
+              {paket.map((paket)=>
               (
+                
                   <tr>
-                     <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap">
                     <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
                     
                     </span>
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                     <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                    {user._id}
+                    {paket._id}
                     </span>
                   </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {user.nama}
+                      {paket.name}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold text-black">
-                      {user.email}
-                      </span>
+                    <td className="w-3/4 col-span-3 mt-8">
+                      <p className="mt-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {paket.deskripsi}
+                      </p>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-black">
-                      {user.no_hp}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-black">
-                      {user.password}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-300 text-blue-900">
-                      {user.gender}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-dark-green">
-                    {user.role}
+                    <td className="w-3/4 col-span-3 mt-8">
+                      <p className="mx-2 line-clamp-3 text-black text-xs whitespace-pre-line align-bottom">
+                      {paket.harga}
+                      </p>
                     </td>
                   </tr>
-                  ) )}
+                   ) )}
               </tbody>
             </table>
           </div>
