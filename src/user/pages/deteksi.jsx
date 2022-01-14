@@ -3,7 +3,7 @@ import { Link, useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import Button from "../components/button";
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import NavbarLogin from "../components/navbarlogin";
 import SoalDeteksi from "../components/soalDeteksi";
 import validation from "../components/validation";
 
@@ -83,7 +83,7 @@ export default function DeteksiPage() {
     <div>
       {user && 
         <div className="bg-white">
-          <Navbar />
+          <NavbarLogin />
           <div className="container mx-auto px-5 my-12 text-black font-poppins">
             <div className="lg:mb-8 mb-4">
               <h1 className="lg:text-4xl text-xl text-dark-green font-montserrat font-bold capitalize">Tes Level Stress</h1>
