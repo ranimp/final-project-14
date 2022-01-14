@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function CardPaket ({name, desc, price}) {
   const [user, setUser] = useState()
+
   useEffect(() => {
     const loggedInUser = localStorage.getItem("credential");
     if (loggedInUser) {
@@ -20,30 +21,34 @@ export default function CardPaket ({name, desc, price}) {
       for ( let i = 0; i < 20; i++ ) {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
       }
-    const responseServer = await fetch('https://be-cureit.herokuapp.com/payment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "order_id": `Cureit-${result}`,
-        "gross_amount": `300000`,
-        "name": `${user.name}`,
-        "email": `${user.email}`,
-        "phone": `${user.phone}`
-      }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data)
-      return data
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-    console.log(responseServer)
-    window.open(responseServer.transaction.redirect_url)
-    history.push("/payment")
+    if(user) {
+      const responseServer = await fetch('http://localhost:3000/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "order_id": `Cureit-${result}`,
+          "gross_amount": `300000`,
+          "name": `${user.name}`,
+          "email": `${user.email}`,
+          "phone": `${user.phone}`
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data)
+        return data
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+      console.log(responseServer)
+      window.open(responseServer.transaction.redirect_url)
+      history.push("/payment")
+    } else {
+      history.push("/login")
+    }
   };
   return (
     <>
