@@ -26,12 +26,10 @@ export default function DetailPsikologPage() {
       const fetch = res.data
       setPsikolog(fetch)
       setTesti(fetch.testimoni)
-      // console.log(testi);
     })
   },[psikolog])
   let {id} = useParams()
 
-  // console.log(psikolog.testimoni);
 
   return (
     <div className="bg-white">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import validation from "../components/validation";
 import Button from "../components/button";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Footer from "../components/footer";
 import NavbarLogin from "../components/navbarlogin";
 

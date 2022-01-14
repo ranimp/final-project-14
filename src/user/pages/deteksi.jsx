@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Button from "../components/button";
 import Footer from "../components/footer";
@@ -64,12 +64,10 @@ export default function DeteksiPage() {
       score += (values.score + Number(event.target.value))
     }
     setValues({score, question: newQuestion})
-    console.log(values);
   }
   
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(values);
     if(values.score > 35) {
       history.push("/bermasalah")
     } else if (values.score < 35 && values.score > 25) {
