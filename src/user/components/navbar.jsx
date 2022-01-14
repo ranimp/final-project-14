@@ -36,7 +36,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item hidden lg:block">
-                <a
+                <div
                   className="lg:px-3 py-2 text-lg capitalize font-bold leading-snug text-dark-green  dropdown dropdown-hover"
                 >
                   <i tabIndex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Fitur
@@ -69,10 +69,10 @@ export default function Navbar() {
                       <Link to="/testimoni">Pengalaman Pengguna</Link>
                     </li>
                   </ul>
-                </a>
+                </div>
               </li>
               <li className="nav-item block lg:hidden">
-                <a
+                <div
                   className="lg:px-3 py-2 text-lg capitalize font-bold leading-snug text-dark-green  artboard" onClick={() => setFiturOpen(!fiturOpen)}
                 >
                   <i tabIndex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Fitur
@@ -100,7 +100,7 @@ export default function Navbar() {
                       <Link to="/testimoni">Pengalaman Pengguna</Link>
                     </li>
                   </ul>
-                </a>
+                </div>
               </li>
               <li className="nav-item">
                 <Link

@@ -5,9 +5,12 @@ import ProfilData from "../components/dataProfil";
 import DataKonsultasi from "../components/dataKonsultasi";
 import NavbarLogin from "../components/navbarlogin";
 import SidebarProfil from "../components/sidebarProfil";
+import axios from "axios";
 
 export default function ProfilPage() {  
   const [user, setUser] = useState()
+  const [psikolog, setPsikolog] = useState()
+  const [dataKonsultasi, setDataKonsultasi] = useState(false)
   const history = useHistory()
 
   useEffect(() => {
@@ -19,6 +22,20 @@ export default function ProfilPage() {
       history.push('/login')
     }
   }, []);
+
+  useEffect(() => {
+    axios.get("https://be-cureit.herokuapp.com/konsultasi")
+    .then (res => {
+      const fetch = res.data
+      const data = fetch.find(e => e.email === user.email)
+      if(data) {
+        setDataKonsultasi(true)
+        setPsikolog(data.psikolog[0].name)
+      } else {
+        setDataKonsultasi(false)
+      }
+    })
+  })
 
   return (
     <div>
@@ -43,7 +60,7 @@ export default function ProfilPage() {
                 <ProfilData name={user.name} birthdate={user.birthdate} email={user.email} email_ortu={user.email_Ortu} no_hp={user.no_hp}/>
               </div>
               <div>
-                <DataKonsultasi />
+                {dataKonsultasi ? <DataKonsultasi name={psikolog}/> : <div>Belum ada data</div>}            
               </div>
             </div>
           </div>

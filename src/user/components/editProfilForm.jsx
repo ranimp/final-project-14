@@ -188,10 +188,11 @@ export default function EditProfil() {
       {/* gambar */}
       <div className="my-3">
         <label className="label text-sm font-bold text-black block">Foto Profil</label>
-        <input className="input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent" type="file" id="file"
+        <input className="input text-xs w-full p-2 border border-gray-300 rounded mt-1 hover:border-dark-green bg-transparent" type="text" id="file"
         name="gambar"
         value={values.gambar}
-        onChange={handleChange}/>
+        onChange={handleChange}
+        placeholder="masukkan url gambar kamu"/>
       </div>
 
       <a href="#my-modal" className="btn bg-dark-green hover:btn-accent border-0 w-full" >simpan</a> 

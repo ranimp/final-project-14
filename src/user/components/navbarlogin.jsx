@@ -47,11 +47,11 @@ export default function NavbarLogin() {
                 </Link>
               </li>
               <li className="nav-item block lg:hidden">
-                <a
+                <div
                   className="lg:px-3 pb-2 text-lg capitalize font-bold leading-snug text-dark-green  dropdown dropdown-end dropdown-hover" href="#" onClick={() => setProfilOpen(!profilOpen)}
                 >
-                  <i tabindex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Profile</span>
-                  <ul tabindex="0" className={"menu text-sm" + (profilOpen ? ' block' : ' hidden')}>
+                  <i tabIndex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Profile</span>
+                  <ul tabIndex="0" className={"menu text-sm" + (profilOpen ? ' block' : ' hidden')}>
                     <li className='hover:bg-light-green'>
                       <Link to="/profil">profil saya</Link>
                     </li> 
@@ -59,20 +59,20 @@ export default function NavbarLogin() {
                       <Link to="/edit-profil">edit profil</Link>
                     </li> 
                   </ul>
-                </a>
+                </div>
               </li>
               <li className="nav-item hidden lg:block">
-                <a
+                <div
                   className="lg:px-3 py-2 text-lg capitalize font-bold leading-snug text-dark-green  dropdown dropdown-end dropdown-hover" href="#"
                 >
-                  <i tabindex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Fitur
+                  <i tabIndex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Fitur
                     <span className='inline-block ml-2'>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                       </svg>
                     </span>
                   </span>
-                  <ul tabindex="0" class="shadow menu dropdown-content bg-white rounded-box w-52 text-sm py-0">
+                  <ul tabIndex="0" className="shadow menu dropdown-content bg-white rounded-box w-52 text-sm py-0">
                     <li className='hover:bg-light-green'>
                       <Link to="/konsultasi">Konsultasi</Link>
                     </li> 
@@ -95,15 +95,15 @@ export default function NavbarLogin() {
                       <Link to="/testimoni">Pengalaman Pengguna</Link>
                     </li>
                   </ul>
-                </a>
+                </div>
               </li>
               <li className="nav-item block lg:hidden">
-                <a
+                <div
                   className="lg:px-3 py-2 text-lg capitalize font-bold leading-snug text-dark-green  artboard" href="#" onClick={() => setFiturOpen(!fiturOpen)}
                 >
-                  <i tabindex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Fitur
+                  <i tabIndex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">Fitur
                   </span>
-                  <ul tabindex="0" className={"menu text-sm" + (fiturOpen ? ' block' : ' hidden')}>
+                  <ul tabIndex="0" className={"menu text-sm" + (fiturOpen ? ' block' : ' hidden')}>
                     <li className='hover:bg-light-green'>
                       <Link to="/konsultasi">Konsultasi</Link>
                     </li> 
@@ -126,7 +126,7 @@ export default function NavbarLogin() {
                       <Link to="/testimoni">Pengalaman Pengguna</Link>
                     </li>
                   </ul>
-                </a>
+                </div>
               </li>
               <li className="nav-item">
                 <Link
@@ -136,15 +136,15 @@ export default function NavbarLogin() {
                 </Link>
               </li>
               <li className="nav-item hidden lg:block">
-                <a
+                <div
                   className="lg:px-3 text-lg capitalize font-bold leading-snug text-dark-green dropdown dropdown-end dropdown-hover" href="#"
                 >
-                  <i tabindex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">
+                  <i tabIndex="0" className="lg:text-lg leading-lg text-dark-green opacity-75"></i><span className="ml-2 flex">
                     <span className='inline-block'>
                     <img src={ava} className="w-12 -mb-2 rounded-full" alt='profile'/>
                     </span>
                   </span>
-                  <ul tabindex="0" class="shadow menu dropdown-content bg-white rounded-box w-52 text-sm py-0 capitalize">
+                  <ul tabIndex="0" className="shadow menu dropdown-content bg-white rounded-box w-52 text-sm py-0 capitalize">
                     <li className='hover:bg-light-green'>
                       <Link to="/profil">profil saya</Link>
                     </li> 
@@ -155,7 +155,7 @@ export default function NavbarLogin() {
                       <Link to="/login" onClick={handleLogout}>keluar</Link>
                     </li>
                   </ul>
-                </a>
+                </div>
               </li>
               <li className="nav-item block lg:hidden">
                 <Link
