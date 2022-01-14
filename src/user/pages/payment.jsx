@@ -24,7 +24,7 @@ export default function Payment() {
         <NavbarLogin />
         <div className="flex flex-col items-center justify-center w-11/12 bg-white mx-auto py-8 border-2 border-dark-green rounded-3xl my-6 lg:my-12">
           <img src={payment} alt='403' className="lg:w-6/12 mb-2"/>
-          <h1 className="font-montserrat font-bold text-xl lg:text-4xl text-center">Yey! Pembayaran Kamu <span className="text-dark-green font-bold">Sudah Berhasil!</span></h1>
+          <h1 className="font-montserrat font-bold text-xl lg:text-4xl text-center">Yey! Pembayaran Kamu <span className="text-dark-green font-bold">Sedang Diproses!</span></h1>
           <p className="font-poppins text-sm lg:text-xl text-center my-5 px-2">Silahkan selesaikan pembayaranmu pada window/tab yang muncul di browser kamu ya! (jangan lupa pop-up nya jangan di blokir 😁) </p>
           <p className="font-poppins text-sm lg:text-xl text-center mb-5 px-2">Kalau sudah, ayo kita lanjut untuk melakukan penjadwalan konsultasi dengan psikolog pilihan kamu!</p>
           <Link to='/jadwal-konsultasi'>

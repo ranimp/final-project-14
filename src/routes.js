@@ -58,6 +58,7 @@ import NotFound from './user/pages/404notfound';
 import HasilDeteksi from './user/pages/deteksiBermasalah';
 import HasilDeteksi2 from './user/pages/deteksiTidakada';
 import HasilDeteksi3 from './user/pages/deteksiPengembangan';
+import Payment from './user/pages/payment';
 
 AOS.init();
 
@@ -68,6 +69,7 @@ export default function UserRoutes() {
         <div className="App">
           <Switch>
             <Route exact path="/403" component={Forbidden} />
+            <Route exact path="/payment" component={Payment} />
             <Route exact path="/bermasalah" component={HasilDeteksi} />
             <Route exact path="/tidak-bermasalah" component={HasilDeteksi2} />
             <Route exact path="/butuh-pengembangan" component={HasilDeteksi3} />
